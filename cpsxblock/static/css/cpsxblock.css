@@ -1,0 +1,9 @@
+/* CSS for CPSXBlock */
+
+.cpsxblock_block .count {
+    font-weight: bold;
+}
+
+.cpsxblock_block p {
+    cursor: pointer;
+}
