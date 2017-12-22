@@ -100,6 +100,24 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
                                """,
                                ('1', curr_user))
                 cnx.commit()
+            else:
+                for (group_id, course_id, user1, user2) in cursor:
+                    if user1 is None:
+                        cursor.execute("""
+                                        UPDATE user_groups
+                                        SET user1=%s
+                                        WHERE group_id=%s && course_id=%s
+                                       """,
+                                       (curr_user, group_id, course_id))
+                        cnx.commit()
+                    elif user2 is None:
+                        cursor.execute("""
+                                        UPDATE user_groups
+                                        SET user2=%s
+                                        WHERE group_id=%s && course_id=%s
+                                       """,
+                                       (curr_user, group_id, course_id))
+                        cnx.commit()
 
         cursor.execute("""
                         SELECT * from user_groups

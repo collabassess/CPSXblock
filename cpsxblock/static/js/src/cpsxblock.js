@@ -88,7 +88,7 @@ function CPSXBlock(runtime, element,data) {
             data: JSON.stringify({"hello": "world"}),
             success: function(result){
                 if(result){
-                    TogetherJSConfig_findRoom = {prefix: result.room, max: 2};
+                    TogetherJSConfig_findRoom = {prefix: result.room, max: 5};
                 }else{
                     console.log("No room/partner available")
                 }
