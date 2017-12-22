@@ -33,13 +33,18 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
 
     Matching_Algorithm = String(
         default="Random", scope=Scope.settings,
-        help="matching algorithm",
+        help="matching algorithm"
     )
-    temp = String(
-        default="Random", scope=Scope.settings,
-        help="matching algorithm",
+    Group_Size = String(
+        default=5, scope=Scope.settings,
+        help="Size of group, specify numnber only"
     )
-    editable_fields = ('Matching_Algorithm','temp')
+    Collaboration_Type = String(
+        default='chat', scope=Scope.settings,
+        help="accepted values: chat(for chat only),audio(for both chat and audio)"
+    )
+
+    editable_fields = ('Matching_Algorithm','Group_Size','Collaboration_Type')
     # Fields are defined on the class.  You can access them in your code as
     # self.<fieldname>.
 
@@ -68,8 +73,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         frag.add_css(self.resource_string("static/css/cpsxblock.css"))
         frag.add_javascript(self.resource_string("static/js/src/cpsxblock.js"))
         frag.add_javascript(self.resource_string("static/js/togetherjs-min.js"))
-        frag.initialize_js('CPSXBlock')
-
+        frag.initialize_js('CPSXBlock', {'collab_type': self.Collaboration_Type})
         return frag
 
 
@@ -129,55 +133,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
             temp = str("room"+str(group_id)+str(course_id))
             cursor.close()
             cnx.close()
-            return {"room": temp}
-
-    @XBlock.json_handler
-    def initializeRoom(self):
-        """
-            A handler, which intializes room for the collaboration partners and syncs with mysql backend.
-        """
-        cnx = MySQLdb.connect(**s.database)
-        cursor = cnx.cursor()
-        curr_user = self.get_userid()
-        # log.error("curr_user:"+curr_user)
-
-
-        # if not cursor.rowcount:
-        #     log.error("No results found")
-        #     cursor.execute("""
-        #                    SELECT * from user_groups
-        #                    WHERE user1 IS NULL OR user2 IS NULL
-        #                     """)
-        #     if not cursor.rowcount:
-        #         log.error("New row created")
-        #         cursor.execute("""
-        #                            INSERT INTO user_groups(course_id,user1) VALUES (%s,%s)
-        #                        """,
-        #                        ('1', curr_user))
-        #         cnx.commit()
-        #     else:
-        #         log.error("Old row updated")
-        #         for (group_id, course_id, user1, user2) in cursor:
-        #             if user1 is None:
-        #                 log.error("User1 updated")
-        #                 cursor.execute("""
-        #                                 UPDATE user_groups
-        #                                 SET user1=%s
-        #                                 WHERE group_id=%s && course_id=%s
-        #                                """,
-        #                                (curr_user, group_id, course_id))
-        #                 cnx.commit()
-        #             elif user2 is None:
-        #                 log.error("User2 updated")
-        #                 cursor.execute("""
-        #                                 UPDATE user_groups
-        #                                 SET user2=%s
-        #                                 WHERE group_id=%s && course_id=%s
-        #                                """,
-        #                                (curr_user, group_id, course_id))
-        #                 cnx.commit()
-        cursor.close()
-        cnx.close()
+            return {"room": temp,"size":self.Group_Size}
 
 
 

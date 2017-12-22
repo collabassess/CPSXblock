@@ -3,12 +3,20 @@ function CPSXBlock(runtime, element,data) {
 
     function updateUserName(result) {
         console.log(result.s_id);
+        if(window.localStorage) {
+                window.localStorage.setItem("togetherjs.identityId",result.s_id);
+                console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
+                console.log(window.localStorage)
+
+        }
         TogetherJS.config("getUserName", function () {
           return result.s_name;
         });
         TogetherJS.config("suppressJoinConfirmation", function () {
           return true;
         });
+
+        TogetherJS.reinitialize();
 
     }
 
@@ -39,9 +47,13 @@ function CPSXBlock(runtime, element,data) {
 
     $(function ($) {
 
-            TogetherJS.config("disableWebRTC", function () {
+            console.log("collab_type:"+data.collab_type);
+            if(data.collab_type !== "audio"){
+                    TogetherJS.config("disableWebRTC", function () {
                           return true;
                         });
+            }
+
             TogetherJS.config("suppressInvite", function () {
               return true;
             });
@@ -62,23 +74,8 @@ function CPSXBlock(runtime, element,data) {
             });
 
 
-        TogetherJSConfig_hubBase = "https://calm-escarpment-25279.herokuapp.com/";
+            TogetherJSConfig_hubBase = "https://calm-escarpment-25279.herokuapp.com/";
 
-
-
-//        //initialize chat rooms
-//        var url_intialize_room = runtime.handlerUrl(element, 'initializeRoom');
-//         $.ajax({
-//                type: "POST",
-//                url: url_intialize_room,
-//                data: JSON.stringify({"hello": "world1"}),
-//                success: function(result){
-//                    console.log("room initialized")
-//                },
-//                error: function (request, status, error) {
-//                    console.log(request.responseText);
-//                }
-//            });
 
        // update room name
         var handlerUrl = runtime.handlerUrl(element, 'returnRoom');
@@ -88,14 +85,14 @@ function CPSXBlock(runtime, element,data) {
             data: JSON.stringify({"hello": "world"}),
             success: function(result){
                 if(result){
-                    TogetherJSConfig_findRoom = {prefix: result.room, max: 5};
+                    TogetherJSConfig_findRoom = {prefix: result.room, max: result.size};
                 }else{
                     console.log("No room/partner available")
                 }
             }
         });
 
-//        console.log(TogetherJS.config.get("findRoom"))
+        console.log(TogetherJS.config.get("findRoom"))
 
         var handlerStudentUrl = runtime.handlerUrl(element, 'returnUserName');
         $.ajax({
