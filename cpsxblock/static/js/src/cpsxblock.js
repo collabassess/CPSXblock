@@ -1,7 +1,8 @@
 /* Javascript for CPSXBlock. */
 function CPSXBlock(runtime, element,data) {
 
-   function updateUserName(result) {
+    function updateUserName(result) {
+        console.log(result.s_id);
         TogetherJS.config("getUserName", function () {
           return result.s_name;
         });
@@ -9,55 +10,60 @@ function CPSXBlock(runtime, element,data) {
           return true;
         });
 
-        //alert(result.s_name+" it works");
-        //TogetherJS();
     }
 
 
+    function toggleButton(){
+
+        if(TogetherJS.running){
+            $("#btn-content").text("Collaborate with a partner")
+            $("#collaborate").removeClass("button-error");
+            $("#collaborate").addClass("button-success");
+
+        }else{
+            $("#btn-content").text("End collaboration")
+            $("#collaborate").removeClass("button-success");
+            $("#collaborate").addClass("button-error");
+        }
+
+    }
+
     $('#collaborate').click(function(){
 
+            toggleButton();
             TogetherJS();
             console.log(TogetherJS.config.get("findRoom"))
 
     });
 
-    $("#check").click(function(){
-        alert(TogetherJS.running);
-    });
-
 
     $(function ($) {
-//        updateVotes(data)
 
-        TogetherJS.config("disableWebRTC", function () {
+            TogetherJS.config("disableWebRTC", function () {
+                          return true;
+                        });
+            TogetherJS.config("suppressInvite", function () {
               return true;
             });
-        TogetherJS.config("suppressInvite", function () {
-          return true;
-        });
-        TogetherJS.config("suppressJoinConfirmation", function () {
-          return true;
-        });
-        TogetherJSConfig_cloneClicks = "button.submit";
-        TogetherJS.config("cloneClicks", function () {
-          return "button.submit";
-        });
+            TogetherJS.config("suppressJoinConfirmation", function () {
+              return true;
+            });
+            TogetherJSConfig_cloneClicks = "button.submit";
 
-        TogetherJS.config("includeHashInUrl", function () {
-          return true;
-        });
+            TogetherJS.config("cloneClicks", function () {
+              return "button.submit";
+            });
+
+            TogetherJS.config("includeHashInUrl", function () {
+              return true;
+            });
+            TogetherJS.config("dontShowClicks",function(){
+            return true;
+            });
+
 
         TogetherJSConfig_hubBase = "https://calm-escarpment-25279.herokuapp.com/";
 
-        TogetherJS.config("dontShowClicks",function(){
-            return true;
-        });
-        //initialize chat rooms
-         $.ajax({
-                type: "POST",
-                url: runtime.handlerUrl(element, 'initializeRoom'),
-                data: JSON.stringify({"hello": "world1"})
-            });
 
        // update room name
         var handlerUrl = runtime.handlerUrl(element, 'returnRoom');
@@ -66,11 +72,11 @@ function CPSXBlock(runtime, element,data) {
             url: handlerUrl,
             data: JSON.stringify({"hello": "world"}),
             success: function(result){
-                TogetherJSConfig_findRoom = {prefix: result.room, max: 5};
+                TogetherJSConfig_findRoom = {prefix: result.room, max: 2};
             }
         });
 
-        console.log(TogetherJS.config.get("findRoom"))
+//        console.log(TogetherJS.config.get("findRoom"))
 
         var handlerStudentUrl = runtime.handlerUrl(element, 'returnUserName');
         $.ajax({
@@ -85,9 +91,18 @@ function CPSXBlock(runtime, element,data) {
             }
         });
 
-
-
+        if(TogetherJS.running){
+            $("#btn-content").text("End collaboration")
+            $("#collaborate").removeClass("button-success");
+            $("#collaborate").addClass("button-error");
+        }else{
+            $("#btn-content").text("Collaborate with a partner")
+            $("#collaborate").removeClass("button-error");
+            $("#collaborate").addClass("button-success");
+        }
 
     });
+
+
 
 }

@@ -69,7 +69,9 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         frag.add_javascript(self.resource_string("static/js/src/cpsxblock.js"))
         frag.add_javascript(self.resource_string("static/js/togetherjs-min.js"))
         frag.initialize_js('CPSXBlock')
-
+        self.initializeRoom()
+        # frag.initialize_js('CPSXBlock', {'up': self.upvotes,
+        #                                        'down': self.downvotes})
         return frag
 
 
@@ -96,8 +98,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
             cnx.close()
             return {"room": temp}
 
-    @XBlock.json_handler
-    def initializeRoom(self,data,suffix=''):
+    def initializeRoom(self):
         """
             A handler, which intializes room for the collaboration partners and syncs with mysql backend.
         """
