@@ -75,9 +75,7 @@ function CPSXBlock(runtime, element,data) {
                     console.log("room initialized")
                 },
                 error: function (request, status, error) {
-                    alert(error);
-                    alert(status);
-                    alert(request.responseText);
+                    console.log(request.responseText);
                 }
             });
 
@@ -88,8 +86,8 @@ function CPSXBlock(runtime, element,data) {
             url: handlerUrl,
             data: JSON.stringify({"hello": "world"}),
             success: function(result){
-                if(result.room!=null){
-                                TogetherJSConfig_findRoom = {prefix: result.room, max: 2};
+                if(result){
+                    TogetherJSConfig_findRoom = {prefix: result.room, max: 2};
                 }else{
                     console.log("No room/partner available")
                 }
