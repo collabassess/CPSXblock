@@ -66,19 +66,19 @@ function CPSXBlock(runtime, element,data) {
 
 
 
-        //initialize chat rooms
-        var url_intialize_room = runtime.handlerUrl(element, 'initializeRoom');
-         $.ajax({
-                type: "POST",
-                url: url_intialize_room,
-                data: JSON.stringify({"hello": "world1"}),
-                success: function(result){
-                    console.log("room initialized")
-                },
-                error: function (request, status, error) {
-                    console.log(request.responseText);
-                }
-            });
+//        //initialize chat rooms
+//        var url_intialize_room = runtime.handlerUrl(element, 'initializeRoom');
+//         $.ajax({
+//                type: "POST",
+//                url: url_intialize_room,
+//                data: JSON.stringify({"hello": "world1"}),
+//                success: function(result){
+//                    console.log("room initialized")
+//                },
+//                error: function (request, status, error) {
+//                    console.log(request.responseText);
+//                }
+//            });
 
        // update room name
         var handlerUrl = runtime.handlerUrl(element, 'returnRoom');
