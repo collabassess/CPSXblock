@@ -10,8 +10,6 @@ function CPSXBlock(runtime, element) {
           return true;
         });
 
-        //alert(result.s_name+" it works");
-        //TogetherJS();
     }
 
 
@@ -72,7 +70,12 @@ function CPSXBlock(runtime, element) {
          $.ajax({
                 type: "POST",
                 url: runtime.handlerUrl(element, 'initializeRoom'),
-                data: JSON.stringify({"hello": "world1"})
+                data: JSON.stringify({"hello": "world1"}),
+                error: function (request, status, error) {
+                    alert(error);
+                    alert(status);
+                    alert(request.responseText);
+                }
             });
 
        // update room name
