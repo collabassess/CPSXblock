@@ -106,9 +106,8 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         curr_user = self.get_userid()
         log.error("curr_user:"+curr_user)
         cursor.execute("""
-                                           INSERT INTO user_groups(course_id,user1) VALUES (%s,%s)
-                                       """,
-                       ('1', curr_user))
+                           INSERT INTO user_groups(course_id,user1) VALUES (%s,%s)
+                       """,('1', str(curr_user)))
         cnx.commit()
 
         # if not cursor.rowcount:
