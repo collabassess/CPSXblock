@@ -85,9 +85,21 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         curr_user = self.get_userid()
 
         cursor.execute("""
-                           INSERT INTO user_groups(course_id,user1) VALUES (%s,%s)
-                       """, ('1', curr_user))
-        cnx.commit()
+                           SELECT * from user_groups
+                           WHERE user1=%s OR user2=%s
+                       """, (curr_user, curr_user))
+
+        if not cursor.rowcount:
+            cursor.execute("""
+                               SELECT * from user_groups
+                               WHERE user1 IS NULL OR user2 IS NULL
+                            """)
+            if not cursor.rowcount:
+                cursor.execute("""
+                                   INSERT INTO user_groups(course_id,user1) VALUES (%s,%s)
+                               """,
+                               ('1', curr_user))
+                cnx.commit()
 
         cursor.execute("""
                         SELECT * from user_groups
