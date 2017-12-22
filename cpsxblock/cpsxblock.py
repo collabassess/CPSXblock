@@ -35,8 +35,11 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         default="Random", scope=Scope.settings,
         help="matching algorithm",
     )
-
-    editable_fields = ('Matching_Algorithm')
+    temp = String(
+        default="Random", scope=Scope.settings,
+        help="matching algorithm",
+    )
+    editable_fields = ('Matching_Algorithm','temp')
     # Fields are defined on the class.  You can access them in your code as
     # self.<fieldname>.
 
@@ -59,11 +62,13 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         html = self.resource_string("static/html/cpsxblock.html")
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/cpsxblock.css"))
+        frag.add_css(self.resource_string("static/css/materialize.min.css"))
+        frag.add_css(self.resource_string("static/css/google-fonts.css"))
+        frag.add_javascript(self.resource_string("static/js/materialize.min.js"))
         frag.add_javascript(self.resource_string("static/js/src/cpsxblock.js"))
         frag.add_javascript(self.resource_string("static/js/togetherjs-min.js"))
         frag.initialize_js('CPSXBlock')
-        # frag.initialize_js('TogetherJsXBlock', {'up': self.upvotes,
-        #                                        'down': self.downvotes})
+
         return frag
 
 
