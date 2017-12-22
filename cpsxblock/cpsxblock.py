@@ -1,24 +1,48 @@
 """TO-DO: Write a description of what this XBlock is."""
+# import datetime
+# import pytz
+# import json
+import logging
+# # import io
+#
+log = logging.getLogger(__name__)
+
+logging.basicConfig(level = logging.ERROR)
+
+logging.disable(logging.CRITICAL)
+logging.disable(logging.DEBUG)
+logging.disable(logging.INFO)
+
 
 import pkg_resources
 from xblock.core import XBlock
-from xblock.fields import Integer, Scope
+from xblock.fields import Integer, Scope,String, DateTime, Boolean
 from xblock.fragment import Fragment
+from xblockutils.studio_editable import StudioEditableXBlockMixin
+import MySQLdb
+import settings as s
 
 
-class CPSXBlock(XBlock):
+# @XBlock.needs('fs')
+@XBlock.needs("i18n")
+@XBlock.wants('user')
+class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     """
     TO-DO: document what your XBlock does.
     """
 
+    Matching_Algorithm = String(
+        default="Random", scope=Scope.settings,
+        help="matching algorithm",
+    )
+
+    editable_fields = ('Matching_Algorithm')
     # Fields are defined on the class.  You can access them in your code as
     # self.<fieldname>.
 
-    # TO-DO: delete count, and define your own fields.
-    count = Integer(
-        default=0, scope=Scope.user_state,
-        help="A simple counter, to show something happening",
-    )
+
+
+    # fs = Filesystem(help="File system", scope=Scope.user_state_summary)
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
@@ -28,28 +52,118 @@ class CPSXBlock(XBlock):
     # TO-DO: change this view to display your data your own way.
     def student_view(self, context=None):
         """
-        The primary view of the CPSXBlock, shown to students
+        The primary view of the TogetherJsXBlock, shown to students
         when viewing courses.
         """
+
         html = self.resource_string("static/html/cpsxblock.html")
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/cpsxblock.css"))
         frag.add_javascript(self.resource_string("static/js/src/cpsxblock.js"))
+        frag.add_javascript(self.resource_string("static/js/togetherjs-min.js"))
         frag.initialize_js('CPSXBlock')
+        # frag.initialize_js('TogetherJsXBlock', {'up': self.upvotes,
+        #                                        'down': self.downvotes})
         return frag
+
 
     # TO-DO: change this handler to perform your own actions.  You may need more
     # than one handler, or you may not need any handlers at all.
     @XBlock.json_handler
-    def increment_count(self, data, suffix=''):
+    def returnRoom(self, data, suffix=''):
         """
-        An example handler, which increments the data.
+        a handler which returns the chat room name.
         """
-        # Just to show data coming in...
-        assert data['hello'] == 'world'
+        cnx = MySQLdb.connect(**s.database)
+        cursor = cnx.cursor()
+        curr_user = self.get_userid()
 
-        self.count += 1
-        return {"count": self.count}
+        cursor.execute("""
+                        SELECT * from user_groups
+                        WHERE user1=%s OR user2=%s
+                       """, (curr_user, curr_user))
+        #log.error("here")
+        for (group_id, course_id, user1, user2) in cursor:
+            #log.error("in returnRoom fn")
+            temp = str("room"+str(group_id)+str(course_id))
+            cursor.close()
+            cnx.close()
+            return {"room": temp}
+
+    @XBlock.json_handler
+    def initializeRoom(self,data,suffix=''):
+        """
+                A handler, which intializes room for the collaboration partners and syncs with mysql backend.
+        """
+        cnx = MySQLdb.connect(**s.database)
+        cursor = cnx.cursor()
+        curr_user = self.get_userid()
+        log.error("curr_user:"+curr_user)
+        cursor.execute("""
+                           SELECT * from user_groups
+                           WHERE user1=%s OR user2=%s
+                       """, (curr_user, curr_user))
+
+        if not cursor.rowcount:
+            log.error("No results found")
+            cursor.execute("""
+                           SELECT * from user_groups
+                           WHERE user1 IS NULL OR user2 IS NULL
+                            """)
+            if not cursor.rowcount:
+                log.error("New row created")
+                cursor.execute("""
+                                   INSERT INTO user_groups(course_id,user1) VALUES (%s,%s)
+                               """,
+                               ('1', curr_user))
+                cnx.commit()
+            else:
+                log.error("Old row updated")
+                for (group_id, course_id, user1, user2) in cursor:
+                    if user1 is None:
+                        log.error("User1 updated")
+                        cursor.execute("""
+                                        UPDATE user_groups
+                                        SET user1=%s
+                                        WHERE group_id=%s && course_id=%s
+                                       """,
+                                       (curr_user, group_id, course_id))
+                        cnx.commit()
+                    elif user2 is None:
+                        log.error("User2 updated")
+                        cursor.execute("""
+                                        UPDATE user_groups
+                                        SET user2=%s
+                                        WHERE group_id=%s && course_id=%s
+                                       """,
+                                       (curr_user, group_id, course_id))
+                        cnx.commit()
+        cursor.close()
+        cnx.close()
+
+
+    @XBlock.json_handler
+    def returnUserName(self, data, suffix=''):
+        """
+           a handler which returns user name.
+        """
+        return {"s_name": self.get_user().full_name}
+
+    def get_user(self):
+        """Get an attribute of the current user."""
+        user_service = self.runtime.service(self, 'user')
+        if user_service:
+            # May be None when creating bok choy test fixtures
+            return user_service.get_current_user()
+        return None
+
+    def get_userid(self):
+        try:
+            return self.get_user().opt_attrs['edx-platform.user_id']
+        except:
+            return '4'
+   # def get_sql_access(self):
+
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.
@@ -60,7 +174,7 @@ class CPSXBlock(XBlock):
             ("CPSXBlock",
              """<cpsxblock/>
              """),
-            ("Multiple CPSXBlock",
+            ("Multiple cpsxblock",
              """<vertical_demo>
                 <cpsxblock/>
                 <cpsxblock/>

@@ -30,10 +30,10 @@ Step 4:
 Assuming your location is inside just outside CPSXblock folder
 
 <pre>
-mysql -u \[<i>your_root_access_user\] -p -h localhost < CPSXblock/Database\ file/collab_assess.sql
+mysql -u <i>your_root_access_user</i> -p -h localhost < CPSXblock/Database\ file/collab_assess.sql
 </pre>
 
-\[<i>enter database password- default is empty\]
+\[<i>enter database password- default is empty\]</i>
 
 
 Step 5:
@@ -45,5 +45,4 @@ sudo /edx/bin/supervisorctl restart edxapp:*
 ##check status:
 
 sudo /edx/bin/supervisorctl status edxapp:*
-
 </pre>
