@@ -2,16 +2,16 @@
 # import datetime
 # import pytz
 # import json
-import logging
+# import logging
 # # import io
+
+# log = logging.getLogger(__name__)
 #
-log = logging.getLogger(__name__)
-
-logging.basicConfig(level = logging.ERROR)
-
-logging.disable(logging.CRITICAL)
-logging.disable(logging.DEBUG)
-logging.disable(logging.INFO)
+# logging.basicConfig(level = logging.ERROR)
+#
+# logging.disable(logging.CRITICAL)
+# logging.disable(logging.DEBUG)
+# logging.disable(logging.INFO)
 
 
 import pkg_resources
@@ -104,10 +104,10 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         cnx = MySQLdb.connect(**s.database)
         cursor = cnx.cursor()
         curr_user = self.get_userid()
-        log.error("curr_user:"+curr_user)
+        # log.error("curr_user:"+curr_user)
         cursor.execute("""
                            INSERT INTO user_groups(course_id,user1) VALUES (%s,%s)
-                       """,('1', str(curr_user)))
+                       """,('1', curr_user))
         cnx.commit()
 
         # if not cursor.rowcount:
