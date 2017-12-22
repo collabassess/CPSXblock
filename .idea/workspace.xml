@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42d8fc76-76d3-4018-b1a5-e46fc79677a5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/cpsxblock/cpsxblock.py" afterPath="$PROJECT_DIR$/cpsxblock/cpsxblock.py" />
-      <change beforePath="$PROJECT_DIR$/cpsxblock/static/css/cpsxblock.css" afterPath="$PROJECT_DIR$/cpsxblock/static/css/cpsxblock.css" />
-      <change beforePath="$PROJECT_DIR$/cpsxblock/static/html/cpsxblock.html" afterPath="$PROJECT_DIR$/cpsxblock/static/html/cpsxblock.html" />
       <change beforePath="$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js" afterPath="$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,41 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cpsxblock.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cpsxblock.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cpsxblock/cpsxblock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="materialize.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cpsxblock/static/js/materialize.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="3" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="google-fonts.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cpsxblock/static/css/google-fonts.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="materialize.min.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cpsxblock/static/css/materialize.min.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="11855" lean-forward="false" selection-start-line="33" selection-start-column="11855" selection-end-line="33" selection-end-column="11855" />
+            <state relative-caret-position="1902">
+              <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -92,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cpsxblock.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cpsxblock.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1650">
-              <caret line="110" column="9" lean-forward="false" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
+            <state relative-caret-position="220">
+              <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -122,6 +89,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cpsxblock/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -131,6 +108,7 @@
       <find>rtc</find>
       <find>hub</find>
       <find>suppressInvite</find>
+      <find>part</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,8 +125,8 @@
         <option value="$PROJECT_DIR$/cpsxblock/static/js/materialize.min.js" />
         <option value="$PROJECT_DIR$/cpsxblock/static/html/cpsxblock.html" />
         <option value="$PROJECT_DIR$/cpsxblock/static/css/cpsxblock.css" />
-        <option value="$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js" />
         <option value="$PROJECT_DIR$/cpsxblock/cpsxblock.py" />
+        <option value="$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js" />
       </list>
     </option>
   </component>
@@ -414,14 +392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cpsxblock/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -497,18 +467,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js">
+    <entry file="file://$PROJECT_DIR$/cpsxblock/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="110" column="9" lean-forward="false" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
+        <state relative-caret-position="150">
+          <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cpsxblock/cpsxblock.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        <state relative-caret-position="1902">
+          <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding />
         </state>
       </provider>

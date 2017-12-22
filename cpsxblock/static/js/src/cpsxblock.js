@@ -81,7 +81,7 @@ function CPSXBlock(runtime, element) {
             url: handlerUrl,
             data: JSON.stringify({"hello": "world"}),
             success: function(result){
-                TogetherJSConfig_findRoom = {prefix: result.room, max: 5};
+                TogetherJSConfig_findRoom = {prefix: result.room, max: 2};
             }
         });
 

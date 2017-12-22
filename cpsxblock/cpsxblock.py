@@ -39,7 +39,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         default="Random", scope=Scope.settings,
         help="matching algorithm",
     )
-    editable_fields = ('Matching_Algorithm','temp')
+    editable_fields = 'Matching_Algorithm'
     # Fields are defined on the class.  You can access them in your code as
     # self.<fieldname>.
 
@@ -50,7 +50,6 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         default="CPSXBlock"
     )
 
-    # fs = Filesystem(help="File system", scope=Scope.user_state_summary)
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
@@ -169,7 +168,6 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
             return self.get_user().opt_attrs['edx-platform.user_id']
         except:
             return '4'
-   # def get_sql_access(self):
 
 
     # TO-DO: change this to create the scenarios you'd like to see in the
