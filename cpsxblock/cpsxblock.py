@@ -39,7 +39,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         default="Random", scope=Scope.settings,
         help="matching algorithm",
     )
-    editable_fields = 'Matching_Algorithm'
+    editable_fields = ('Matching_Algorithm','temp')
     # Fields are defined on the class.  You can access them in your code as
     # self.<fieldname>.
 
@@ -99,7 +99,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     @XBlock.json_handler
     def initializeRoom(self,data,suffix=''):
         """
-                A handler, which intializes room for the collaboration partners and syncs with mysql backend.
+            A handler, which intializes room for the collaboration partners and syncs with mysql backend.
         """
         cnx = MySQLdb.connect(**s.database)
         cursor = cnx.cursor()
