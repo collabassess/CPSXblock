@@ -16,7 +16,7 @@ sudo git clone git+https://github.com/collabassess/CPSXblock.git
 
 Step 3: Install the Xblock
 <pre>
-sudo -u edxapp /edx/bin/pip.edxapp install CPSXblock --no-deps
+sudo -u edxapp /edx/bin/pip.edxapp install CPSXblock/ --no-deps
 
 #To upgrade the version, use the following flag:
 
