@@ -15,43 +15,31 @@ function CPSXBlock(runtime, element) {
 
 
     function toggleButton(){
-        var classNames = $("#collaborate").attr("class");
-        console.log(classNames.includes("red"));
-
-        console.log($("#collaborate").data("tooltip"));
 
         if(TogetherJS.running){
-            $("#collaborate").attr("data-tooltip","Click here to collaborate Now").tooltip('fixTitle')
-          .tooltip('show');;
-            $("#collaborate").removeClass("red");
-            $("#collaborate").addClass("green");
+            $("#btn-content").text("Collaborate with a partner")
+            $("#collaborate").removeClass("button-error");
+            $("#collaborate").addClass("button-success");
 
         }else{
-        $("#collaborate").attr("data-tooltip","Click here to end collaboration").tooltip('fixTitle')
-          .tooltip('show');
-            $("#collaborate").removeClass("green");
-            $("#collaborate").addClass("red");
+            $("#btn-content").text("End collaboration")
+            $("#collaborate").removeClass("button-success");
+            $("#collaborate").addClass("button-error");
         }
 
     }
 
     $('#collaborate').click(function(){
-        $("#togetherjs-chat-button").hide();
 
             toggleButton();
-
             TogetherJS();
             console.log(TogetherJS.config.get("findRoom"))
 
-
-    });
-
-    $("#check").click(function(){
-        alert(TogetherJS.running);
     });
 
 
     $(function ($) {
+
             TogetherJS.config("disableWebRTC", function () {
                           return true;
                         });
@@ -73,7 +61,6 @@ function CPSXBlock(runtime, element) {
             TogetherJS.config("dontShowClicks",function(){
             return true;
             });
-            TogetherJS.reinitialize();
 
 
         TogetherJSConfig_hubBase = "https://calm-escarpment-25279.herokuapp.com/";
@@ -113,23 +100,16 @@ function CPSXBlock(runtime, element) {
             }
         });
 
-        if(!TogetherJS.running){
-            $("#collaborate").attr("data-tooltip","Click here to collaborate Now").tooltip('fixTitle')
-          .tooltip('show');;
-            $("#collaborate").removeClass("red");
-            $("#collaborate").addClass("green");
+        if(TogetherJS.running){
+            $("#btn-content").text("End collaboration")
+            $("#collaborate").removeClass("button-success");
+            $("#collaborate").addClass("button-error");
         }else{
-            $("#collaborate").attr("data-tooltip","Click here to end collaboration").tooltip('fixTitle')
-          .tooltip('show');
-            $("#collaborate").removeClass("green");
-            $("#collaborate").addClass("red");
+            $("#btn-content").text("Collaborate with a partner")
+            $("#collaborate").removeClass("button-error");
+            $("#collaborate").addClass("button-success");
         }
 
-
-        //to remove the pulse effect
-        setTimeout( function(){
-                $("#collaborate").removeClass("pulse");
-          }  , 3000 );
     });
 
 
