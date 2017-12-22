@@ -50,8 +50,6 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         default="CPSXBlock"
     )
 
-    def __init__(self):
-        self.initializeRoom();
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
@@ -64,12 +62,14 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         The primary view of the TogetherJsXBlock, shown to students
         when viewing courses.
         """
+
         html = self.resource_string("static/html/cpsxblock.html")
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/cpsxblock.css"))
         frag.add_javascript(self.resource_string("static/js/src/cpsxblock.js"))
         frag.add_javascript(self.resource_string("static/js/togetherjs-min.js"))
         frag.initialize_js('CPSXBlock')
+
         return frag
 
 
@@ -96,7 +96,8 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
             cnx.close()
             return {"room": temp}
 
-    def initializeRoom(self):
+    @XBlock.json_handler
+    def initializeRoom(self,data,suffix=''):
         """
             A handler, which intializes room for the collaboration partners and syncs with mysql backend.
         """

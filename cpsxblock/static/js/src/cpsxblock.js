@@ -64,6 +64,23 @@ function CPSXBlock(runtime, element,data) {
 
         TogetherJSConfig_hubBase = "https://calm-escarpment-25279.herokuapp.com/";
 
+
+
+        //initialize chat rooms
+         $.ajax({
+                type: "POST",
+                url: runtime.handlerUrl(element, 'initializeRoom'),
+                data: JSON.stringify({"hello": "world1"}),
+                success: function(result){
+                    console.log("room initialized")
+                },
+                error: function (request, status, error) {
+                    alert(error);
+                    alert(status);
+                    alert(request.responseText);
+                }
+            });
+
        // update room name
         var handlerUrl = runtime.handlerUrl(element, 'returnRoom');
         $.ajax({
@@ -71,7 +88,11 @@ function CPSXBlock(runtime, element,data) {
             url: handlerUrl,
             data: JSON.stringify({"hello": "world"}),
             success: function(result){
-                TogetherJSConfig_findRoom = {prefix: result.room, max: 2};
+                if(result.room!=null){
+                                TogetherJSConfig_findRoom = {prefix: result.room, max: 2};
+                }else{
+                    console.log("No room/partner available")
+                }
             }
         });
 
