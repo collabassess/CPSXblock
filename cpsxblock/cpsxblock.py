@@ -62,16 +62,13 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         The primary view of the TogetherJsXBlock, shown to students
         when viewing courses.
         """
-
+        self.initializeRoom()
         html = self.resource_string("static/html/cpsxblock.html")
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/cpsxblock.css"))
         frag.add_javascript(self.resource_string("static/js/src/cpsxblock.js"))
         frag.add_javascript(self.resource_string("static/js/togetherjs-min.js"))
         frag.initialize_js('CPSXBlock')
-        self.initializeRoom()
-        # frag.initialize_js('CPSXBlock', {'up': self.upvotes,
-        #                                        'down': self.downvotes})
         return frag
 
 
