@@ -50,6 +50,8 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         default="CPSXBlock"
     )
 
+    def __init__(self):
+        self.initializeRoom();
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
@@ -62,7 +64,6 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         The primary view of the TogetherJsXBlock, shown to students
         when viewing courses.
         """
-        self.initializeRoom()
         html = self.resource_string("static/html/cpsxblock.html")
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/cpsxblock.css"))
@@ -144,6 +145,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
                         cnx.commit()
         cursor.close()
         cnx.close()
+
 
 
     @XBlock.json_handler

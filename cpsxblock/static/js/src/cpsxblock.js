@@ -64,7 +64,6 @@ function CPSXBlock(runtime, element,data) {
 
         TogetherJSConfig_hubBase = "https://calm-escarpment-25279.herokuapp.com/";
 
-
        // update room name
         var handlerUrl = runtime.handlerUrl(element, 'returnRoom');
         $.ajax({
