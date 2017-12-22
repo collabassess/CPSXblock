@@ -2,6 +2,7 @@
 function CPSXBlock(runtime, element) {
 
     function updateUserName(result) {
+        console.log(result.s_id);
         TogetherJS.config("getUserName", function () {
           return result.s_name;
         });
@@ -85,7 +86,7 @@ function CPSXBlock(runtime, element) {
             }
         });
 
-        console.log(TogetherJS.config.get("findRoom"))
+//        console.log(TogetherJS.config.get("findRoom"))
 
         var handlerStudentUrl = runtime.handlerUrl(element, 'returnUserName');
         $.ajax({
