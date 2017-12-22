@@ -2,13 +2,6 @@
 function CPSXBlock(runtime, element,data) {
 
     function updateUserName(result) {
-        console.log(result.s_id);
-        if(window.localStorage) {
-                window.localStorage.setItem("togetherjs.identityId",result.s_id);
-                console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
-                console.log(window.localStorage)
-
-        }
         TogetherJS.config("getUserName", function () {
           return result.s_name;
         });
@@ -46,6 +39,7 @@ function CPSXBlock(runtime, element,data) {
 
 
     $(function ($) {
+            console.log(window.localStorage);
 
             console.log("collab_type:"+data.collab_type);
             if(data.collab_type !== "audio"){
@@ -86,6 +80,13 @@ function CPSXBlock(runtime, element,data) {
             success: function(result){
                 if(result){
                     TogetherJSConfig_findRoom = {prefix: result.room, max: result.size};
+                    console.log(result.s_id);
+                    if(window.localStorage) {
+                            var t_id = String(result.s_id+"."+result.s_group);
+                            window.localStorage.setItem("togetherjs.identityId",t_id);
+                            console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
+                            console.log(window.localStorage);
+                    }
                 }else{
                     console.log("No room/partner available")
                 }

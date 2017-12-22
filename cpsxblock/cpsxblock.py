@@ -129,11 +129,11 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
                        """, (curr_user, curr_user))
         #log.error("here")
         for (group_id, course_id, user1, user2) in cursor:
-            #log.error("in returnRoom fn")
             temp = str("room"+str(group_id)+str(course_id))
+            group = str(group_id)
             cursor.close()
             cnx.close()
-            return {"room": temp,"size":self.Group_Size}
+            return {"room": temp,"size":self.Group_Size, "s_id":self.get_userid(),"s_group":group}
 
 
 
