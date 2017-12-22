@@ -5,6 +5,7 @@ database = {
   	'db': 'collab_assess'
 }
 
+ALLOWED_HOSTS = ['*']
 
 # database = {
 #     'host': '', #your host ip address
