@@ -67,9 +67,10 @@ function CPSXBlock(runtime, element,data) {
 
 
         //initialize chat rooms
+        var url_intialize_room = runtime.handlerUrl(element, 'initializeRoom');
          $.ajax({
                 type: "POST",
-                url: runtime.handlerUrl(element, 'initializeRoom'),
+                url: url_intialize_room,
                 data: JSON.stringify({"hello": "world1"}),
                 success: function(result){
                     console.log("room initialized")
