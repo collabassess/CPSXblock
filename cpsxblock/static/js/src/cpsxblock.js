@@ -6,7 +6,10 @@ function CPSXBlock(runtime, element,data) {
         console.log(result.s_id+","+result.user_id+","+result.emails)
         console.log(result.is_auth+","+result.is_staff+","+result.emails)
         TogetherJS.config("getUserName", function () {
-          return result.s_name;
+          if(result.s_name== ""):
+            return result.username;
+          else:
+            return result.s_name;
         });
         TogetherJS.config("suppressJoinConfirmation", function () {
           return true;
