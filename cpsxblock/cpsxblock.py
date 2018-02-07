@@ -142,7 +142,14 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         """
            a handler which returns user name.
         """
-        return {"s_name": self.get_user().full_name, "s_id":self.get_userid()}
+        return {"s_name": self.get_user().full_name,
+                "s_id":self.get_userid(),
+                "username": self.get_user().opt_attrs.get('edx-platform.username'),
+                "user_id": self.get_user().opt_attrs.get('edx-platform.user_id'),
+                "emails": self.get_user().emails,
+                "is_auth": self.get_user().opt_attrs.get('edx-platform.is_authenticated'),
+                "is_staff": self.get_user().opt_attrs.get('edx-platform.is_staff')
+                }
 
     def get_user(self):
         """Get an attribute of the current user."""
