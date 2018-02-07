@@ -2,6 +2,7 @@
 function CPSXBlock(runtime, element,data) {
 
     function updateUserName(result) {
+        console.log("inside the updateUserName fucntion with the username value:"+result.s_name);
         TogetherJS.config("getUserName", function () {
           return result.s_name;
         });
