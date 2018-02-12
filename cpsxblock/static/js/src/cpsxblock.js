@@ -27,26 +27,51 @@ function CPSXBlock(runtime, element,data) {
         if(TogetherJS.running){
             $("#btn-content").text("Collaborate with a partner")
             $("#collaborate").removeClass("button-error");
+            $("#collaborate").removeClass("button-warning");
             $("#collaborate").addClass("button-success");
 
         }else{
             $("#btn-content").text("End collaboration")
             $("#collaborate").removeClass("button-success");
+            $("#collaborate").removeClass("button-warning");
             $("#collaborate").addClass("button-error");
         }
 
     }
 
     $('#collaborate').click(function(){
-
             toggleButton();
             TogetherJS();
             console.log(TogetherJS.config.get("findRoom"))
-
     });
 
+    function checkTogetherJsStatus(){
+
+            if(TogetherJS.running){
+                snackbar("Connected to a partner");
+                $("#btn-content").text("End collaboration")
+                $("#collaborate").removeClass("button-success");
+                $("#collaborate").removeClass("button-warning");
+                $("#collaborate").addClass("button-error");
+            }else{
+                snackbar("Not connected to anyone yet!");
+                $("#btn-content").text("Collaborate with a partner")
+                $("#collaborate").removeClass("button-error");
+                $("#collaborate").removeClass("button-warning");
+                $("#collaborate").addClass("button-success");
+            }
+    }
+
+    function snackbar(message){
+        $("#snackbar").addClass("show");
+        $("#snackbar").text(message)
+        setTimeout(function(){ $("#snackbar").removeClass("show"); }, 3000);
+    }
 
     $(function ($) {
+            setTimeout(checkTogetherJsStatus, 3000);
+
+
             console.log(window.localStorage);
 
             console.log("collab_type:"+data.collab_type);
@@ -116,15 +141,8 @@ function CPSXBlock(runtime, element,data) {
             }
         });
 
-        if(TogetherJS.running){
-            $("#btn-content").text("End collaboration")
-            $("#collaborate").removeClass("button-success");
-            $("#collaborate").addClass("button-error");
-        }else{
-            $("#btn-content").text("Collaborate with a partner")
-            $("#collaborate").removeClass("button-error");
-            $("#collaborate").addClass("button-success");
-        }
+
+
 
     });
 
