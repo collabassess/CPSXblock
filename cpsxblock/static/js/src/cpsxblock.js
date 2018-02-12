@@ -48,6 +48,7 @@ function CPSXBlock(runtime, element,data) {
     function checkTogetherJsStatus(){
 
             if(TogetherJS.running){
+                TogetherJS.reinitialize;
                 snackbar("Connected to a partner");
                 $("#btn-content").text("End collaboration")
                 $("#collaborate").removeClass("button-success");
