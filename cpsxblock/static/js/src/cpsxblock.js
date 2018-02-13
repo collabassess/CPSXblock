@@ -48,6 +48,11 @@ function CPSXBlock(runtime, element,data) {
     function checkTogetherJsStatus(){
 
             if(TogetherJS.running){
+                TogetherJSConfig_cloneClicks = false;
+
+                TogetherJS.config("cloneClicks", function () {
+                  return false;
+                })
                 TogetherJS.reinitialize;
                 snackbar("Connected to a partner");
                 $("#btn-content").text("End collaboration")
@@ -88,10 +93,10 @@ function CPSXBlock(runtime, element,data) {
             TogetherJS.config("suppressJoinConfirmation", function () {
               return true;
             });
-            TogetherJSConfig_cloneClicks = "button.submit";
+            TogetherJSConfig_cloneClicks = false;
 
             TogetherJS.config("cloneClicks", function () {
-              return "button.submit";
+              return false;
             });
 
             TogetherJS.config("includeHashInUrl", function () {

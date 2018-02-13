@@ -9,7 +9,7 @@
     // Disables clicks for a certain element.
     // (e.g., 'canvas' would not show clicks on canvas elements.)
     // Setting this to true will disable clicks globally.
-    dontShowClicks: false,
+    dontShowClicks: true,
     // Experimental feature to echo clicks to certain elements across clients:
     cloneClicks: false,
     // Enable Mozilla or Google analytics on the page when TogetherJS is activated:
