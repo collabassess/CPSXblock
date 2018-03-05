@@ -119,6 +119,10 @@ function CPSXBlock(runtime, element,data) {
             success: function(result){
                 if(result){
                     TogetherJSConfig_findRoom = {prefix: result.room, max: result.size};
+                    TogetherJS.config("findRoom", function () {
+                        return {prefix: result.room, max: result.size};
+                    };
+                    TogetherJS.reinitialize();
                     console.log(result.s_id);
                     if(window.localStorage) {
                             var t_id = String(result.s_id+"."+result.s_session);
