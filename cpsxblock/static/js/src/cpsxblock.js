@@ -66,16 +66,7 @@ function CPSXBlock(runtime, element,data) {
                 $("#collaborate").removeClass("button-warning");
                 $("#collaborate").addClass("button-success");
             }
-    }
 
-    function snackbar(message){
-        $("#snackbar").addClass("show");
-        $("#snackbar").text(message)
-        setTimeout(function(){ $("#snackbar").removeClass("show"); }, 3000);
-    }
-
-    $(function ($) {
-            setTimeout(checkTogetherJsStatus, 3000);
 
 
             console.log(window.localStorage);
@@ -135,7 +126,7 @@ function CPSXBlock(runtime, element,data) {
                     console.log("No room/partner available")
                 }
             },
-            error: function (err) {
+            error: function (xhr,status,error) {
                 console.log("failed");
             }
         });
@@ -154,10 +145,16 @@ function CPSXBlock(runtime, element,data) {
                 alert(request.responseText);
             }
         });
+    }
 
+    function snackbar(message){
+        $("#snackbar").addClass("show");
+        $("#snackbar").text(message)
+        setTimeout(function(){ $("#snackbar").removeClass("show"); }, 3000);
+    }
 
-
-
+    $(function ($) {
+            setTimeout(checkTogetherJsStatus, 3000);
     });
 
 
