@@ -1,17 +1,17 @@
 """TO-DO: Write a description of what this XBlock is."""
-# import datetime
-# import pytz
-# import json
-# import logging
-# # import io
+import datetime
+import pytz
+import json
+import logging
+# import io
 
-# log = logging.getLogger(__name__)
-#
-# logging.basicConfig(level = logging.ERROR)
-#
-# logging.disable(logging.CRITICAL)
-# logging.disable(logging.DEBUG)
-# logging.disable(logging.INFO)
+log = logging.getLogger(__name__)
+
+logging.basicConfig(level = logging.ERROR)
+
+logging.disable(logging.CRITICAL)
+logging.disable(logging.DEBUG)
+logging.disable(logging.INFO)
 
 
 import pkg_resources
@@ -21,6 +21,7 @@ from xblock.fragment import Fragment
 from xblockutils.studio_editable import StudioEditableXBlockMixin
 import MySQLdb
 import settings as s
+import requests
 
 
 # @XBlock.needs('fs')
@@ -84,56 +85,13 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         """
         a handler which returns the chat room name.
         """
-        cnx = MySQLdb.connect(**s.database)
-        cursor = cnx.cursor()
         curr_user = self.get_userid()
-
-        cursor.execute("""
-                           SELECT * from user_groups
-                           WHERE user1=%s OR user2=%s
-                       """, (curr_user, curr_user))
-
-        if not cursor.rowcount:
-            cursor.execute("""
-                               SELECT * from user_groups
-                               WHERE user1 IS NULL OR user2 IS NULL
-                            """)
-            if not cursor.rowcount:
-                cursor.execute("""
-                                   INSERT INTO user_groups(course_id,user1) VALUES (%s,%s)
-                               """,
-                               ('1', curr_user))
-                cnx.commit()
-            else:
-                for (group_id, course_id, user1, user2) in cursor:
-                    if user1 is None:
-                        cursor.execute("""
-                                        UPDATE user_groups
-                                        SET user1=%s
-                                        WHERE group_id=%s && course_id=%s
-                                       """,
-                                       (curr_user, group_id, course_id))
-                        cnx.commit()
-                    elif user2 is None:
-                        cursor.execute("""
-                                        UPDATE user_groups
-                                        SET user2=%s
-                                        WHERE group_id=%s && course_id=%s
-                                       """,
-                                       (curr_user, group_id, course_id))
-                        cnx.commit()
-
-        cursor.execute("""
-                        SELECT * from user_groups
-                        WHERE user1=%s OR user2=%s
-                       """, (curr_user, curr_user))
-        #log.error("here")
-        for (group_id, course_id, user1, user2) in cursor:
-            temp = str("room"+str(group_id)+str(course_id))
-            group = str(group_id)
-            cursor.close()
-            cnx.close()
-            return {"room": temp,"size":self.Group_Size, "s_id":self.get_userid(),"s_group":group}
+        data = {'curr_user': curr_user}
+        response = requests.post("http://54.156.197.224:3000/users/initializeRoom",
+                                 json=data)
+        log.error("response is", str(response))
+        session = str(response).split("_")[1];
+        return {"room": str(response), "size": self.Group_Size, "s_id": self.get_userid(), "s_session": session}
 
 
 
