@@ -116,23 +116,27 @@ function CPSXBlock(runtime, element,data) {
             type: "POST",
             url: handlerUrl,
             data: JSON.stringify({"hello": "world"}),
-            success: function(result){
-                if(result){
+            success: function(result) {
+                console.log("inside returnRoom");
+                if (result) {
                     TogetherJSConfig_findRoom = {prefix: result.room, max: result.size};
                     TogetherJS.config("findRoom", function () {
                         return {prefix: result.room, max: result.size};
                     });
                     TogetherJS.reinitialize();
-                    console.log(result.s_id);
-                    if(window.localStorage) {
-                            var t_id = String(result.s_id+"."+result.s_session);
-                            window.localStorage.setItem("togetherjs.identityId",t_id);
-                            console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
-                            console.log(window.localStorage);
+                    console.log("room name: " + result.room);
+                    if (window.localStorage) {
+                        var t_id = String(result.s_id + "." + result.s_session);
+                        window.localStorage.setItem("togetherjs.identityId", t_id);
+                        console.log("togetherjsID:" + window.localStorage.getItem("togetherjs.identityId"));
+                        console.log(window.localStorage);
                     }
-                }else{
+                } else {
                     console.log("No room/partner available")
                 }
+            },
+            error: function (err) {
+                console.log("failed");
             }
         });
 

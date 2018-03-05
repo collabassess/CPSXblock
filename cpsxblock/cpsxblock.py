@@ -87,9 +87,9 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         """
         curr_user = self.get_userid()
         data = {'curr_user': curr_user}
-        response = requests.post("http://54.156.197.224:3000/users/initializeRoom",
+        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/users/initializeRoom",
                                  json=data)
-        log.error("response is", str(response))
+        log.error("response is", str(response.text))
         session = str(response).split("_")[1];
         return {"room": str(response), "size": self.Group_Size, "s_id": self.get_userid(), "s_session": session}
 
