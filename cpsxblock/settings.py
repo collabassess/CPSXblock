@@ -1,5 +1,5 @@
 database = {
-    'host': '54.156.197.224',
+    'host': 'localhost',
     'user': 'root',
   	'passwd': 'edx',
   	'db': 'collab_assess'
