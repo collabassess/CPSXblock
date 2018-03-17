@@ -1,6 +1,8 @@
 /* Javascript for CPSXBlock. */
 function CPSXBlock(runtime, element,data) {
 
+    var handle;
+
     function updateUserName(result) {
         console.log("inside the updateUserName fucntion with the username value:"+result.s_name+","+result.username+","+result.user_id);
         console.log(result.s_id+","+result.user_id+","+result.emails)
@@ -21,20 +23,78 @@ function CPSXBlock(runtime, element,data) {
 
     }
 
+    //function to update last online activity
+    function updateLastActivity(){
+        var handlerUrl = runtime.handlerUrl(element, 'updateLastOnline');
+        $.ajax({
+                type: "POST",
+                url: handlerUrl,
+                data: JSON.stringify({"hello": "world"}),
+                success: function(result){
+                    console.log("updating last online activity",result);
+                },
+                error: function (request, status, error) {
+                    console.log(error);
+                    console.log(status);
+                    console.log(request.responseText);
+                }
+            });
+    }
 
     function toggleButton(){
-
+        // togetherjs is not running anymore
         if(TogetherJS.running){
             $("#btn-content").text("Collaborate with a partner")
             $("#collaborate").removeClass("button-error");
             $("#collaborate").removeClass("button-warning");
             $("#collaborate").addClass("button-success");
 
-        }else{
+
+            console.log("disconnected");
+            var handlerUrl = runtime.handlerUrl(element, 'removeFromUserPool');
+            $.ajax({
+                type: "POST",
+                url: handlerUrl,
+                data: JSON.stringify({"hello": "world"}),
+                success: function(result){
+                    console.log("remove from user PoolL",result);
+                },
+                error: function (request, status, error) {
+                    console.log(error);
+                    console.log(status);
+                    console.log(request.responseText);
+                }
+            });
+            clearInterval(handle);
+            if(handle == 0){
+                console.log("handle cleared");
+            }else{
+                console.log(handle);
+            }
+        }else{ //together js has started running
             $("#btn-content").text("End collaboration")
             $("#collaborate").removeClass("button-success");
             $("#collaborate").removeClass("button-warning");
             $("#collaborate").addClass("button-error");
+
+            //add user to the online pool;
+            console.log("connected");
+            var handlerUrl = runtime.handlerUrl(element, 'addToUserPool');
+            $.ajax({
+                type: "POST",
+                url: handlerUrl,
+                data: JSON.stringify({"hello": "world"}),
+                success: function(result){
+                    console.log("add to user PoolL",result);
+                },
+                error: function (request, status, error) {
+                    console.log(error);
+                    console.log(status);
+                    console.log(request.responseText);
+                }
+            });
+
+            handle = setInterval(updateLastActivity, 240000);
         }
 
     }
@@ -42,7 +102,7 @@ function CPSXBlock(runtime, element,data) {
     $('#collaborate').click(function(){
             toggleButton();
             TogetherJS();
-            console.log(TogetherJS.config.get("findRoom"))
+            console.log(TogetherJS.config.get("findRoom"));
     });
 
     function checkTogetherJsStatus(){
@@ -143,9 +203,9 @@ function CPSXBlock(runtime, element,data) {
             data: JSON.stringify({"hello": "world1"}),
             success: updateUserName,
             error: function (request, status, error) {
-                alert(error);
-                alert(status);
-                alert(request.responseText);
+                console.log(error);
+                console.log(status);
+                console.log(request.responseText);
             }
         });
 

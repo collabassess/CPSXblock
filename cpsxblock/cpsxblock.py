@@ -95,6 +95,49 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": session}
 
 
+    @XBlock.json_handler
+    def addToUserPool(self,data,suffix=''):
+        """
+        a handler which adds the current user to online userPool
+
+        :return: boolean signifying success/failure result
+        """
+        curr_user = self.get_userid()
+        data = {'curr_user':curr_user}
+        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/addToUserPool",json=data)
+        if response.text == "success":
+            return True
+        return False
+
+    @XBlock.json_handler
+    def removeFromUserPool(self, data, suffix=''):
+        """
+        a handler which adds the current user to online userPool
+
+        :return: boolean signifying success/failure result
+        """
+        curr_user = self.get_userid()
+        data = {'curr_user': curr_user}
+        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/UserPoolToOffline",
+                                 json=data)
+        if response.text == "success":
+            return True
+        return False
+
+    @XBlock.json_handler
+    def updateLastOnline(self, data, suffix=''):
+        """
+        a handler which adds the current user to online userPool
+
+        :return: boolean signifying success/failure result
+        """
+        curr_user = self.get_userid()
+        data = {'curr_user': curr_user}
+        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/updateLastOnlineUserPool",
+                                 json=data)
+        if response.text == "success":
+            return True
+        return False
 
     @XBlock.json_handler
     def returnUserName(self, data, suffix=''):
