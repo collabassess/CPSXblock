@@ -94,11 +94,14 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     #     session = room.split("_")[1];
     #     return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": session}
 
-    def returnCourseId(self):
-        try:
-            return self.xmodule_runtime.course_id
-        except:
-            return "course-v1:NYU+DEMO_101+2018_T1"
+    @property
+    def course_id(self):
+        if hasattr(self, 'xmodule_runtime'):
+            if hasattr(self.xmodule_runtime.course_id, 'to_deprecated_string'):
+                return self.xmodule_runtime.course_id.to_deprecated_string()
+            else:
+                return self.xmodule_runtime.course_id
+        return 'course-v1:NYU+DEMO_101+2018_T1'
 
     @XBlock.json_handler
     def getPartners(self,data,suffix=''):
@@ -124,9 +127,8 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
 
 
     def pair_users(self, partner):
-        content = {'user1': int(self.get_userid()), 'user2': int(partner), 'course_id': self.returnCourseId()}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/pairUsers",
-                                 json=content)
+        content = {'user1': int(self.get_userid()), 'user2': int(partner), 'course_id': str(self.returnCourseId())}
+        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/pairUsers",json=content)
         room = str(response.text)
         return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": room}
 
