@@ -74,6 +74,7 @@ function CPSXBlock(runtime, element,data) {
             }else{
                 console.log(handle);
             }
+            TogetherJS();
         }
         else{ //together js has started running
             $("#btn-content").text("End collaboration")
@@ -114,10 +115,14 @@ function CPSXBlock(runtime, element,data) {
                 if(result){
                     console.log("here alo mi");
                     TogetherJSConfig_findRoom = {prefix: result.room, max: result.size};
-                    TogetherJS.reinitialize();
+                    // TogetherJS.config("findRoom", function () {
+                    //     return TogetherJSConfig_findRoom;
+                    // });
+                    TogetherJS();
                     console.log("f_room:"+TogetherJS.config.get("findRoom"));
                     if(window.localStorage) {
                             var t_id = String(result.s_id+"."+result.s_session);
+                            window.localStorage.setItem("togetherjs.room",result.room);
                             window.localStorage.setItem("togetherjs.identityId",t_id);
                             console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
                             console.log(window.localStorage);
@@ -152,7 +157,6 @@ function CPSXBlock(runtime, element,data) {
 
     $('#collaborate').click(function(){
             toggleButton();
-            TogetherJS();
             console.log(TogetherJS.config.get("findRoom"));
     });
 
