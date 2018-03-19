@@ -66,7 +66,9 @@ function CPSXBlock(runtime, element,data) {
                 }
             });
             clearInterval(handle);
-            clearInterval(getUserHandle);
+            if(getUserHandle){
+                clearInterval(getUserHandle);
+            }
             if(handle == 0){
                 console.log("handle cleared");
             }else{
