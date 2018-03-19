@@ -114,7 +114,8 @@ function CPSXBlock(runtime, element,data) {
                 if(result){
                     console.log("here alo mi");
                     TogetherJSConfig_findRoom = {prefix: result.room, max: result.size};
-                    console.log("f_room:"+result.room);
+                    TogetherJS.reinitialize();
+                    console.log("f_room:"+TogetherJS.config.get("findRoom"));
                     if(window.localStorage) {
                             var t_id = String(result.s_id+"."+result.s_session);
                             window.localStorage.setItem("togetherjs.identityId",t_id);
