@@ -127,7 +127,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
 
 
     def pair_users(self, partner):
-        content = {'user1': int(self.get_userid()), 'user2': int(partner), 'course_id': str(self.returnCourseId())}
+        content = {'user1': int(self.get_userid()), 'user2': int(partner), 'course_id': str(self.course_id)}
         response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/pairUsers",json=content)
         room = str(response.text)
         return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": room}
