@@ -134,9 +134,25 @@ function CPSXBlock(runtime, element,data) {
         setTimeout(function(){ $("#snackbar").removeClass("show"); }, 3000);
     }
 
+    function printCourseid(){
+        var handlerUrl = runtime.handlerUrl(element, 'returnCourseId');
+        $.ajax({
+                type: "POST",
+                url: handlerUrl,
+                data: JSON.stringify({"hello": "world"}),
+                success: function(result){
+                    console.log("course_id: ",result);
+                },
+                error: function (request, status, error) {
+                    console.log(error);
+                    console.log(status);
+                    console.log(request.responseText);
+                }
+            });
+    }
     $(function ($) {
             setTimeout(checkTogetherJsStatus, 3000);
-
+            printCourseid();
 
             console.log(window.localStorage);
 

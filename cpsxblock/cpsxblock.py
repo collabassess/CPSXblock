@@ -96,6 +96,26 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
 
 
     @XBlock.json_handler
+    def returnCourseId(self,data,suffix=''):
+        return self._serialize_opaque_key(self.xmodule_runtime.course_id)
+
+    def _serialize_opaque_key(self, key):
+        """
+        Gracefully handle opaque keys, both before and after the transition.
+        https://github.com/edx/edx-platform/wiki/Opaque-Keys
+        Currently uses `to_deprecated_string()` to ensure that new keys
+        are backwards-compatible with keys we store in ORA2 database models.
+        Args:
+            key (unicode or OpaqueKey subclass): The key to serialize.
+        Returns:
+            unicode
+        """
+        if hasattr(key, 'to_deprecated_string'):
+            return key.to_deprecated_string()
+        else:
+            return unicode(key)
+
+    @XBlock.json_handler
     def addToUserPool(self,data,suffix=''):
         """
         a handler which adds the current user to online userPool
