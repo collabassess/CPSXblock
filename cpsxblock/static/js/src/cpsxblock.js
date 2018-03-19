@@ -66,12 +66,14 @@ function CPSXBlock(runtime, element,data) {
                 }
             });
             clearInterval(handle);
+            clearInterval(getUserHandle);
             if(handle == 0){
                 console.log("handle cleared");
             }else{
                 console.log(handle);
             }
-        }else{ //together js has started running
+        }
+        else{ //together js has started running
             $("#btn-content").text("End collaboration")
             $("#collaborate").removeClass("button-success");
             $("#collaborate").removeClass("button-warning");
@@ -95,8 +97,54 @@ function CPSXBlock(runtime, element,data) {
             });
 
             handle = setInterval(updateLastActivity, 240000);
+            getUserHandle = setInterval(getAvailableUsers,5000);
         }
 
+    }
+
+    function pairMatch(user){
+        var handlerUrl = runtime.handlerUrl(element, 'pair_users');
+        $.ajax({
+            type: "POST",
+            url: handlerUrl,
+            data: JSON.stringify({"partner": user}),
+            success: function(result){
+                if(result){
+                    console.log("here alo mi");
+                    TogetherJSConfig_findRoom = {prefix: result.room, max: result.size};
+                    console.log("f_room:"+result.room);
+                    if(window.localStorage) {
+                            var t_id = String(result.s_id+"."+result.s_session);
+                            window.localStorage.setItem("togetherjs.identityId",t_id);
+                            console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
+                            console.log(window.localStorage);
+                    }
+                }
+                else{
+                    console.log("matching failed");
+                }
+            }
+        });
+    }
+
+    function getAvailableUsers() {
+        var handlerUrl = runtime.handlerUrl(element, 'getPartners');
+        $.ajax({
+            type: "POST",
+            url: handlerUrl,
+            data: JSON.stringify({"hello": "world"}),
+            success: function(result){
+                if(result){
+                    console.log("partners:");
+                    console.log(result[0]);
+                    clearInterval(getUserHandle);
+                    pairMatch(result[0]);
+                }
+                else{
+                    console.log("No room/partner available");
+                }
+            }
+        });
     }
 
     $('#collaborate').click(function(){
@@ -134,25 +182,26 @@ function CPSXBlock(runtime, element,data) {
         setTimeout(function(){ $("#snackbar").removeClass("show"); }, 3000);
     }
 
-    function printCourseid(){
-        var handlerUrl = runtime.handlerUrl(element, 'returnCourseId');
-        $.ajax({
-                type: "POST",
-                url: handlerUrl,
-                data: JSON.stringify({"hello": "world"}),
-                success: function(result){
-                    console.log("course_id: ",result);
-                },
-                error: function (request, status, error) {
-                    console.log(error);
-                    console.log(status);
-                    console.log(request.responseText);
-                }
-            });
-    }
+    // function printCourseid(){
+    //     var handlerUrl = runtime.handlerUrl(element, 'returnCourseId');
+    //     $.ajax({
+    //             type: "POST",
+    //             url: handlerUrl,
+    //             data: JSON.stringify({"hello": "world"}),
+    //             success: function(result){
+    //                 console.log("course_id:",result);
+    //             },
+    //             error: function (request, status, error) {
+    //                 console.log(error);
+    //                 console.log(status);
+    //                 console.log(request.responseText);
+    //             }
+    //         });
+    // }
+
     $(function ($) {
             setTimeout(checkTogetherJsStatus, 3000);
-            printCourseid();
+            // printCourseid();
 
             console.log(window.localStorage);
 
@@ -186,44 +235,44 @@ function CPSXBlock(runtime, element,data) {
             TogetherJSConfig_hubBase = "https://calm-escarpment-25279.herokuapp.com/";
 
 
-       // update room name
-        var handlerUrl = runtime.handlerUrl(element, 'returnRoom');
-        $.ajax({
-            type: "POST",
-            url: handlerUrl,
-            data: JSON.stringify({"hello": "world"}),
-            success: function(result){
-                if(result){
-                    var final_room = result.room.replace('_','');
-                    final_room = final_room.replace('_','');
-                    TogetherJSConfig_findRoom = {prefix: final_room, max: result.size};
-                    console.log("froom:"+final_room);
-                    if(window.localStorage) {
-                            var t_id = String(result.s_id+"."+result.s_session);
-                            window.localStorage.setItem("togetherjs.identityId",t_id);
-                            console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
-                            console.log(window.localStorage);
-                    }
-                }else{
-                    console.log("No room/partner available")
+           // // update room name
+           //  var handlerUrl = runtime.handlerUrl(element, 'returnRoom');
+           //  $.ajax({
+           //      type: "POST",
+           //      url: handlerUrl,
+           //      data: JSON.stringify({"hello": "world"}),
+           //      success: function(result){
+           //          if(result){
+           //              var final_room = result.room.replace('_','');
+           //              final_room = final_room.replace('_','');
+           //              TogetherJSConfig_findRoom = {prefix: final_room, max: result.size};
+           //              console.log("froom:"+final_room);
+           //              if(window.localStorage) {
+           //                      var t_id = String(result.s_id+"."+result.s_session);
+           //                      window.localStorage.setItem("togetherjs.identityId",t_id);
+           //                      console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
+           //                      console.log(window.localStorage);
+           //              }
+           //          }else{
+           //              console.log("No room/partner available")
+           //          }
+           //      }
+           //  });
+
+            console.log("froom1:"+TogetherJS.config.get("findRoom"));
+
+            var handlerStudentUrl = runtime.handlerUrl(element, 'returnUserName');
+            $.ajax({
+                type: "POST",
+                url: handlerStudentUrl,
+                data: JSON.stringify({"hello": "world1"}),
+                success: updateUserName,
+                error: function (request, status, error) {
+                    console.log(error);
+                    console.log(status);
+                    console.log(request.responseText);
                 }
-            }
-        });
-
-        console.log("froom1:"+TogetherJS.config.get("findRoom"))
-
-        var handlerStudentUrl = runtime.handlerUrl(element, 'returnUserName');
-        $.ajax({
-            type: "POST",
-            url: handlerStudentUrl,
-            data: JSON.stringify({"hello": "world1"}),
-            success: updateUserName,
-            error: function (request, status, error) {
-                console.log(error);
-                console.log(status);
-                console.log(request.responseText);
-            }
-        });
+            });
 
 
 

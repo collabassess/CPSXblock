@@ -80,40 +80,55 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
 
     # TO-DO: change this handler to perform your own actions.  You may need more
     # than one handler, or you may not need any handlers at all.
+    # @XBlock.json_handler
+    # def returnRoom(self, data, suffix=''):
+    #     """
+    #     a handler which returns the chat room name.
+    #     """
+    #     curr_user = self.get_userid()
+    #     data = {'curr_user': curr_user}
+    #     response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/users/initializeRoom",
+    #                              json=data)
+    #     room = str(response.text)
+    #     log.error("response is", room)
+    #     session = room.split("_")[1];
+    #     return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": session}
+
+    def returnCourseId(self):
+        try:
+            return self.xmodule_runtime.course_id
+        except:
+            return "course-v1:NYU+DEMO_101+2018_T1"
+
     @XBlock.json_handler
-    def returnRoom(self, data, suffix=''):
-        """
-        a handler which returns the chat room name.
-        """
+    def getPartners(self,data,suffix=''):
+        return self.getAvailablePartners()
+
+    def getAvailablePartners(self):
         curr_user = self.get_userid()
         data = {'curr_user': curr_user}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/users/initializeRoom",
+        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/getPairId",
                                  json=data)
-        room = str(response.text)
-        log.error("response is", room)
-        session = room.split("_")[1];
-        return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": session}
-
+        if response.text != "no partner available":
+            ids = json.loads(response.text)
+        else:
+            return ""
+        av_ids = []
+        for i in ids:
+            av_ids.append(i['user_id'])
+        return av_ids
 
     @XBlock.json_handler
-    def returnCourseId(self,data,suffix=''):
-        return self._serialize_opaque_key(self.xmodule_runtime.course_id)
+    def pair_users(self,data,suffix=''):
+        user1 = data['partner']
+        user2 = self.get_userid()
+        course = self.returnCourseId()
+        data = {'user1':user1, 'user2':user2, 'course_id':course}
+        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/pairUsers",
+                                 json=data)
+        room = str(response.text)
+        return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": room}
 
-    def _serialize_opaque_key(self, key):
-        """
-        Gracefully handle opaque keys, both before and after the transition.
-        https://github.com/edx/edx-platform/wiki/Opaque-Keys
-        Currently uses `to_deprecated_string()` to ensure that new keys
-        are backwards-compatible with keys we store in ORA2 database models.
-        Args:
-            key (unicode or OpaqueKey subclass): The key to serialize.
-        Returns:
-            unicode
-        """
-        if hasattr(key, 'to_deprecated_string'):
-            return key.to_deprecated_string()
-        else:
-            return unicode(key)
 
     @XBlock.json_handler
     def addToUserPool(self,data,suffix=''):
