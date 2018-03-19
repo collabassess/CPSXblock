@@ -120,7 +120,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
 
     @XBlock.json_handler
     def pair_users(self,data,suffix=''):
-        user1 = data['partner']
+        user1 = self.getAvailablePartners()[0]
         user2 = self.get_userid()
         course = self.returnCourseId()
         content = {'user1':user1, 'user2':user2, 'course_id':course}

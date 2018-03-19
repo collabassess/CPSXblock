@@ -109,7 +109,7 @@ function CPSXBlock(runtime, element,data) {
         $.ajax({
             type: "POST",
             url: handlerUrl,
-            data: JSON.stringify({partner: user}),
+            data: JSON.stringify({"partner": ""+user}),
             success: function(result){
                 if(result){
                     console.log("here alo mi");
