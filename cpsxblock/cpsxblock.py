@@ -119,16 +119,16 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         return av_ids
 
     @XBlock.json_handler
-    def pair_users(self,data,suffix=''):
-        user1 = self.getAvailablePartners()[0]
-        user2 = self.get_userid()
-        course = self.returnCourseId()
-        content = {'user1':user1, 'user2':user2, 'course_id':course}
+    def pair(self,data,suffix=''):
+        return self.pair_users(data['partner'])
+
+
+    def pair_users(self, partner):
+        content = {'user1': int(self.get_userid()), 'user2': int(partner), 'course_id': self.returnCourseId()}
         response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/pairUsers",
                                  json=content)
         room = str(response.text)
         return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": room}
-
 
     @XBlock.json_handler
     def addToUserPool(self,data,suffix=''):
