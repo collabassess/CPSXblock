@@ -66,7 +66,7 @@ function CPSXBlock(runtime, element,data) {
                 }
             });
             clearInterval(handle);
-            if(getUserHandle){
+            if(typeof getUserHandle !== 'undefined'){
                 clearInterval(getUserHandle);
             }
             if(handle == 0){
