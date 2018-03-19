@@ -105,7 +105,7 @@ function CPSXBlock(runtime, element,data) {
     }
 
     function pairMatch(user){
-        var handlerUrl = runtime.handlerUrl(element, 'pair_users');
+        var handlerUrl = runtime.handlerUrl(element, 'pair');
         $.ajax({
             type: "POST",
             url: handlerUrl,
