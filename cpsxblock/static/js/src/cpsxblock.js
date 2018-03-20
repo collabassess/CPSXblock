@@ -124,7 +124,7 @@ function CPSXBlock(runtime, element,data) {
                             console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
                             console.log(window.localStorage);
                     }
-                    TogetherJS.config("findRoom",String(result.room));
+                    TogetherJSConfig_findRoom = String(result.room);
                 }
                 else{
                     console.log("matching failed");
@@ -174,7 +174,7 @@ function CPSXBlock(runtime, element,data) {
                                 console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
                                 console.log(window.localStorage);
                         }
-                        TogetherJS.config("findRoom",String(result.room));
+                        TogetherJSConfig_findRoom = String(result.room);
                         callback(true);
                     }else{
                         callback(false);
