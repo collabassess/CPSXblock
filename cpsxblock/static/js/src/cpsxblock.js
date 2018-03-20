@@ -119,12 +119,12 @@ function CPSXBlock(runtime, element,data) {
                     console.log("here alo mi");
                     if(window.localStorage) {
                             var t_id = String(result.s_id+"."+result.s_session);
-                            window.localStorage.setItem("togetherjs.room",{prefix:String(result.room),max:result.Group_size});
+                            window.localStorage.setItem("togetherjs.room",result.room));
                             window.localStorage.setItem("togetherjs.identityId",t_id);
                             console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
                             console.log(window.localStorage);
                     }
-                    TogetherJS.config("findRoom",{prefix:String(result.room),max:result.Group_size});
+                    TogetherJS.config("findRoom",String(result.room));
                 }
                 else{
                     console.log("matching failed");
@@ -174,7 +174,7 @@ function CPSXBlock(runtime, element,data) {
                                 console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
                                 console.log(window.localStorage);
                         }
-                        TogetherJS.config("findRoom",{prefix:String(result.room),max:result.Group_size});
+                        TogetherJS.config("findRoom",String(result.room));
                         callback(true);
                     }else{
                         callback(false);
@@ -190,6 +190,9 @@ function CPSXBlock(runtime, element,data) {
 
     $('#collaborate').click(function(){
             toggleButton(function (res) {
+                if(TogetherJS.config.get("findRoom") === null){
+                    TogetherJS.config("findRoom",window.localStorage.getItem("togetherjs.room"));
+                }
                 TogetherJS();
             });
             console.log("roooom:"+TogetherJS.config.get("findRoom"));
