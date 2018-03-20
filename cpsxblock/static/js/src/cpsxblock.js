@@ -119,7 +119,7 @@ function CPSXBlock(runtime, element,data) {
                     console.log("here alo mi");
                     if(window.localStorage) {
                             var t_id = String(result.s_id+"."+result.s_session);
-                            window.localStorage.setItem("togetherjs.room",result.room));
+                            window.localStorage.setItem("togetherjs.room",String(result.room));
                             window.localStorage.setItem("togetherjs.identityId",t_id);
                             console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
                             console.log(window.localStorage);
