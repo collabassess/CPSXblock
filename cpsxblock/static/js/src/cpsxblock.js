@@ -41,7 +41,7 @@ function CPSXBlock(runtime, element,data) {
             });
     }
 
-    function toggleButton(){
+    function toggleButton(callback){
         // togetherjs is not running anymore
         if(TogetherJS.running){
             $("#btn-content").text("Collaborate with a partner")
@@ -74,38 +74,41 @@ function CPSXBlock(runtime, element,data) {
             }else{
                 console.log(handle);
             }
-            TogetherJS();
+            callback(1);
         }
         else{ //together js has started running
             $("#btn-content").text("End collaboration")
             $("#collaborate").removeClass("button-success");
             $("#collaborate").removeClass("button-warning");
             $("#collaborate").addClass("button-error");
-
-            //add user to the online pool;
-            console.log("connected");
-            var handlerUrl = runtime.handlerUrl(element, 'addToUserPool');
-            $.ajax({
-                type: "POST",
-                url: handlerUrl,
-                data: JSON.stringify({"hello": "world"}),
-                success: function(result){
-                    console.log("add to user PoolL",result);
-                },
-                error: function (request, status, error) {
-                    console.log(error);
-                    console.log(status);
-                    console.log(request.responseText);
-                }
-            });
-
-            handle = setInterval(updateLastActivity, 240000);
-            getUserHandle = setInterval(getAvailableUsers,5000);
+            callback(1);
         }
 
     }
 
+    function enter_online_pool(){
+        //add user to the online pool;
+        console.log("connected");
+        var handlerUrl = runtime.handlerUrl(element, 'addToUserPool');
+        $.ajax({
+            type: "POST",
+            url: handlerUrl,
+            data: JSON.stringify({"hello": "world"}),
+            success: function(result){
+                console.log("add to user PoolL",result);
+            },
+            error: function (request, status, error) {
+                console.log(error);
+                console.log(status);
+                console.log(request.responseText);
+            }
+        });
+
+        handle = setInterval(updateLastActivity, 240000);
+    }
+
     function pairMatch(user){
+        console.log("inside pairmatch");
         var handlerUrl = runtime.handlerUrl(element, 'pair');
         $.ajax({
             type: "POST",
@@ -114,19 +117,14 @@ function CPSXBlock(runtime, element,data) {
             success: function(result){
                 if(result){
                     console.log("here alo mi");
-                    TogetherJSConfig_findRoom = {prefix: result.room, max: result.size};
-                    // TogetherJS.config("findRoom", function () {
-                    //     return TogetherJSConfig_findRoom;
-                    // });
-                    TogetherJS();
-                    console.log("f_room:"+TogetherJS.config.get("findRoom"));
                     if(window.localStorage) {
                             var t_id = String(result.s_id+"."+result.s_session);
-                            window.localStorage.setItem("togetherjs.room",result.room);
+                            window.localStorage.setItem("togetherjs.room",{prefix:String(result.room),max:result.Group_size});
                             window.localStorage.setItem("togetherjs.identityId",t_id);
                             console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
                             console.log(window.localStorage);
                     }
+                    TogetherJSConfig_findRoom = {prefix:String(result.room),max:result.Group_size};
                 }
                 else{
                     console.log("matching failed");
@@ -136,6 +134,7 @@ function CPSXBlock(runtime, element,data) {
     }
 
     function getAvailableUsers() {
+        console.log("inside getAvailable");
         var handlerUrl = runtime.handlerUrl(element, 'getPartners');
         $.ajax({
             type: "POST",
@@ -145,7 +144,9 @@ function CPSXBlock(runtime, element,data) {
                 if(result){
                     console.log("partners:");
                     console.log(result[0]);
-                    clearInterval(getUserHandle);
+                    if(typeof getUserHandle !== 'undefined'){
+                        clearInterval(getUserHandle);
+                    }
                     pairMatch(result[0]);
                 }
                 else{
@@ -156,24 +157,36 @@ function CPSXBlock(runtime, element,data) {
     }
 
     $('#collaborate').click(function(){
-            toggleButton();
-            console.log(TogetherJS.config.get("findRoom"));
+            toggleButton(function (err,res) {
+                TogetherJS();
+            });
+    });
+
+    $("#enter_online_pool").click(function () {
+        enter_online_pool();
+    });
+
+    $("#set_room_name").click(function () {
+        if(!TogetherJS.running){
+            getUserHandle = setInterval(getAvailableUsers,5000);
+        }
+
     });
 
     function checkTogetherJsStatus(){
 
             if(TogetherJS.running){
                 TogetherJSConfig_cloneClicks = false;
-
                 TogetherJS.config("cloneClicks", function () {
                   return false;
-                })
-                TogetherJS.reinitialize;
+                });
+                TogetherJS.reinitialize();
                 snackbar("Connected to a partner");
                 $("#btn-content").text("End collaboration")
                 $("#collaborate").removeClass("button-success");
                 $("#collaborate").removeClass("button-warning");
                 $("#collaborate").addClass("button-error");
+                console.log("froom2:"+TogetherJS.config.get("findRoom"));
             }else{
                 snackbar("Not connected to anyone yet!");
                 $("#btn-content").text("Collaborate with a partner")
@@ -207,6 +220,7 @@ function CPSXBlock(runtime, element,data) {
     // }
 
     $(function ($) {
+            //getAvailableUsers();
             setTimeout(checkTogetherJsStatus, 3000);
             // printCourseid();
 
@@ -226,6 +240,7 @@ function CPSXBlock(runtime, element,data) {
               return true;
             });
             TogetherJSConfig_cloneClicks = false;
+
 
             TogetherJS.config("cloneClicks", function () {
               return false;
