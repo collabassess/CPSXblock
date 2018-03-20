@@ -165,16 +165,20 @@ function CPSXBlock(runtime, element,data) {
             data: JSON.stringify({"hello": "world"}),
             success: function(result){
                 if(result){
-                    console.log("here alo mi");
-                    if(window.localStorage) {
-                            var t_id = String(result.s_id+"."+result.s_session);
-                            window.localStorage.setItem("togetherjs.room",String(result.room));
-                            window.localStorage.setItem("togetherjs.identityId",t_id);
-                            console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
-                            console.log(window.localStorage);
+                    if(result.room !== "NaN"){
+                        console.log("here alo mi");
+                        if(window.localStorage) {
+                                var t_id = String(result.s_id+"."+result.s_session);
+                                window.localStorage.setItem("togetherjs.room",String(result.room));
+                                window.localStorage.setItem("togetherjs.identityId",t_id);
+                                console.log("togetherjsID:"+window.localStorage.getItem("togetherjs.identityId"));
+                                console.log(window.localStorage);
+                        }
+                        TogetherJS.config("findRoom",{prefix:String(result.room),max:result.Group_size});
+                        callback(true);
+                    }else{
+                        callback(false);
                     }
-                    TogetherJS.config("findRoom",{prefix:String(result.room),max:result.Group_size});
-                    callback(true);
                 }
                 else{
                     console.log("matching failed");
