@@ -137,6 +137,15 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": room}
 
     @XBlock.json_handler
+    def getRoom(self,data,suffix=''):
+        curr_user = self.get_userid()
+        data = {'curr_user': curr_user}
+        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/users/getRoom",
+                                 json=data)
+        room = str(response.text)
+        return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": room}
+
+    @XBlock.json_handler
     def addToUserPool(self,data,suffix=''):
         """
         a handler which adds the current user to online userPool
