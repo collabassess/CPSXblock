@@ -74,6 +74,7 @@ function CPSXBlock(runtime, element,data) {
             }else{
                 console.log(handle);
             }
+            updateToDefaultCohort();
             callback(1);
         }
         else{ //together js has started running
@@ -155,6 +156,7 @@ function CPSXBlock(runtime, element,data) {
         });
 
     }
+
     function getAvailableUsers() {
         console.log("inside getAvailable");
         var handlerUrl = runtime.handlerUrl(element, 'getPartners');
@@ -162,10 +164,11 @@ function CPSXBlock(runtime, element,data) {
             type: "POST",
             url: handlerUrl,
             data: JSON.stringify({"hello": "world"}),
-            success: function(result){
+            success: function(result,genders){
                 if(result){
                     console.log("partners:");
                     console.log(result[0]);
+                    $("#onlinePoolDetails").val(result.toString()+"/"+genders.toString());
                     snackbar("partner found with id:"+result[0]+", connecting...");
                     if(typeof getUserHandle !== 'undefined'){
                         clearInterval(getUserHandle);
@@ -189,7 +192,6 @@ function CPSXBlock(runtime, element,data) {
             }
         });
     }
-
 
     function getRoom(callback){
         console.log("inside getRoom");

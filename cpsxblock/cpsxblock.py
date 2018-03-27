@@ -33,9 +33,11 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     """
 
     Matching_Algorithm = String(
-        default="Random", scope=Scope.settings,
-        help="matching algorithm"
+        default="FCFS", scope=Scope.settings,
+        help="matching algorithm",
+        values=('FCFS', 'gender-homogeneous', 'gender-heterogeneous')
     )
+
     Group_Size = String(
         default=5, scope=Scope.settings,
         help="Size of group, specify numnber only"
@@ -109,17 +111,19 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
 
     def getAvailablePartners(self):
         curr_user = self.get_userid()
-        data = {'curr_user': curr_user}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/getPairId",
+        data = {'curr_user': curr_user, 'pairing_type': self.Matching_Algorithm}
+        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/getAvailablePartners",
                                  json=data)
         if response.text != "no partner available":
             ids = json.loads(response.text)
         else:
             return ""
         av_ids = []
+        av_genders = []
         for i in ids:
             av_ids.append(i['user_id'])
-        return av_ids
+            av_genders.append(i['gender'])
+        return av_ids,av_genders
 
 
     @XBlock.json_handler
