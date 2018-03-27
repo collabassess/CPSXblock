@@ -207,6 +207,7 @@ function CPSXBlock(runtime, element,data) {
                         if(typeof getUserHandle !== 'undefined'){
                             clearInterval(getUserHandle);
                         }
+                        $("#find_partner").text("partner found, to proceed click collaborate");
                         snackbar("room found with id:"+result.room);
                         if(window.localStorage) {
                                 var t_id = String(result.s_id+"."+result.s_session);
