@@ -117,7 +117,7 @@ function CPSXBlock(runtime, element,data) {
             data: JSON.stringify({"partner": String(user)}),
             success: function(result){
                 if(result){
-                    console.log("here alo mi");
+                    snackbar("connected to "+user);
                     if(window.localStorage) {
                             var t_id = String(result.s_id+"."+result.s_session);
                             window.localStorage.setItem("togetherjs.room",String(result.room));
@@ -145,13 +145,21 @@ function CPSXBlock(runtime, element,data) {
                 if(result){
                     console.log("partners:");
                     console.log(result[0]);
+                    snackbar("partner found with id:"+result[0]+", connecting...");
                     if(typeof getUserHandle !== 'undefined'){
                         clearInterval(getUserHandle);
                     }
                     pairMatch(result[0]);
                 }
                 else{
-                    console.log("No room/partner available");
+                    getRoom(function (res) {
+                        if(res == true){
+                            console.log("partner found");
+                            clearInterval(getUserHandle);
+                        }else{
+                            console.log("No partner available to connect");
+                        }
+                    });
                 }
             }
         });
@@ -168,7 +176,10 @@ function CPSXBlock(runtime, element,data) {
             success: function(result){
                 if(result){
                     if(result.room !== "NaN"){
-                        console.log("here alo mi");
+                        if(typeof getUserHandle !== 'undefined'){
+                            clearInterval(getUserHandle);
+                        }
+                        snackbar("room found with id:"+result.room);
                         if(window.localStorage) {
                                 var t_id = String(result.s_id+"."+result.s_session);
                                 window.localStorage.setItem("togetherjs.room",String(result.room));
@@ -197,23 +208,19 @@ function CPSXBlock(runtime, element,data) {
             console.log("roooom:"+TogetherJS.config.get("findRoom"));
     });
 
-    $("#enter_online_pool").click(function () {
+    $("#find_partner").click(function () {
         enter_online_pool();
-    });
-
-    $("#set_room_name").click(function () {
-        console.log("here i am set room:");
         if(!TogetherJS.running){
             getRoom(function (res) {
-
-                console.log("here i am _:"+res);
                 if(!res){
                     getUserHandle = setInterval(getAvailableUsers,5000);
+                }else{
+                    console.log("hmmm");
                 }
-
             });
+        }else{
+            snackbar("stop togetherjs before finding another partner!");
         }
-
     });
 
     function checkTogetherJsStatus(){
@@ -300,8 +307,7 @@ function CPSXBlock(runtime, element,data) {
 
             getRoom(function (res) {
                 console.log("here i am _:"+res);
-                            console.log("froom1:"+TogetherJS.config.get("findRoom"));
-
+                console.log("froom1:"+TogetherJS.config.get("findRoom"));
             });
 
 
