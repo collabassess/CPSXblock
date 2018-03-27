@@ -129,7 +129,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     @XBlock.json_handler
     def updateToDefaultCohort(self,data,suffix):
         curr_user = self.get_userid()
-        data = {'curr_user': curr_user}
+        data = {'curr_user': curr_user, 'course_id': str(self.course_id)}
         response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/updateToDefaultCohort",
                                  json=data)
         return str(response.text)
