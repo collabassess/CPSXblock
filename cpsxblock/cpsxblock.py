@@ -121,6 +121,15 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
             av_ids.append(i['user_id'])
         return av_ids
 
+
+    @XBlock.json_handler
+    def updateToDefaultCohort(self,data,suffix):
+        curr_user = self.get_userid()
+        data = {'curr_user': curr_user}
+        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/updateToDefaultCohort",
+                                 json=data)
+        return str(response.text)
+
     @XBlock.json_handler
     def pair(self,data,suffix=''):
         content = {'user1': int(self.get_userid()), 'user2': int(data['partner']), 'course_id': str(self.course_id)}

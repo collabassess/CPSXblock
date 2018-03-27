@@ -134,6 +134,27 @@ function CPSXBlock(runtime, element,data) {
         });
     }
 
+    function updateToDefaultCohort(){
+        var handlerStudentUrl = runtime.handlerUrl(element, 'updateToDefaultCohort');
+        $.ajax({
+            type: "POST",
+            url: handlerStudentUrl,
+            data: JSON.stringify({"hello": "world1"}),
+            success: function (result) {
+                if(result == "success"){
+                    location.reload();
+                }else{
+                    snackbar("could not assign to default cohort");
+                }
+            },
+            error: function (request, status, error) {
+                console.log(error);
+                console.log(status);
+                console.log(request.responseText);
+            }
+        });
+
+    }
     function getAvailableUsers() {
         console.log("inside getAvailable");
         var handlerUrl = runtime.handlerUrl(element, 'getPartners');
@@ -148,6 +169,8 @@ function CPSXBlock(runtime, element,data) {
                     snackbar("partner found with id:"+result[0]+", connecting...");
                     if(typeof getUserHandle !== 'undefined'){
                         clearInterval(getUserHandle);
+                        snackbar("changing cohort group");
+                        location.reload();
                     }
                     pairMatch(result[0]);
                 }
@@ -156,6 +179,8 @@ function CPSXBlock(runtime, element,data) {
                         if(res == true){
                             console.log("partner found");
                             clearInterval(getUserHandle);
+                            snackbar("changing cohort group");
+                            location.reload();
                         }else{
                             console.log("No partner available to connect");
                         }
