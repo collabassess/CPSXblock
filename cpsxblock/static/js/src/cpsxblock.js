@@ -143,7 +143,7 @@ function CPSXBlock(runtime, element,data) {
             data: JSON.stringify({"hello": "world1"}),
             success: function (result) {
                 if(result == "success"){
-                    location.reload();
+                    setTimeout(function(){ location.reload(); }, 3000);
                 }else{
                     snackbar("could not assign to default cohort");
                 }
@@ -173,7 +173,7 @@ function CPSXBlock(runtime, element,data) {
                     if(typeof getUserHandle !== 'undefined'){
                         clearInterval(getUserHandle);
                         snackbar("changing cohort group");
-                        location.reload();
+                        setTimeout(function(){ location.reload(); }, 3000);
                     }
                     pairMatch(result[0]);
                 }
@@ -183,7 +183,7 @@ function CPSXBlock(runtime, element,data) {
                             console.log("partner found");
                             clearInterval(getUserHandle);
                             snackbar("changing cohort group");
-                            location.reload();
+                            setTimeout(function(){ location.reload(); }, 3000);
                         }else{
                             console.log("No partner available to connect");
                         }
