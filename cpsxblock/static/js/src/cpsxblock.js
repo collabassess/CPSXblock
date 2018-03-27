@@ -44,7 +44,8 @@ function CPSXBlock(runtime, element,data) {
     function toggleButton(callback){
         // togetherjs is not running anymore
         if(TogetherJS.running){
-            $("#btn-content").text("Collaborate with a partner")
+            $("#btn-content").text("Collaborate with a partner");
+            $("#find_partner").text("CPSX - Find partner");
             $("#collaborate").removeClass("button-error");
             $("#collaborate").removeClass("button-warning");
             $("#collaborate").addClass("button-success");
@@ -238,11 +239,12 @@ function CPSXBlock(runtime, element,data) {
     $("#find_partner").click(function () {
         enter_online_pool();
         if(!TogetherJS.running){
+            $("#find_partner").text("searching for partners....");
             getRoom(function (res) {
                 if(!res){
                     getUserHandle = setInterval(getAvailableUsers,5000);
                 }else{
-                    console.log("hmmm");
+                    $("#find_partner").text("partner found, to proceed click collaborate");
                 }
             });
         }else{
