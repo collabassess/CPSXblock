@@ -4,7 +4,7 @@
 
 
 
-## Installing this Xblock
+## Installing CPSXBlock
 
 Step 1: Login to your edx-instance, <br>
 Note: this Xblock has been tested to work with the latest edx ginko instance
@@ -24,3 +24,16 @@ Step 5: In advanced module list -> add "cpsxblock"
 
 
 ![advanced_settings](snapshots/advanced_settings.png)
+
+
+## Updating CPSXBlock
+<pre>
+cd cpsx_scripts
+./update_cpsx.sh
+</pre>
+
+## Removing CPSXBlock
+<pre>
+cd cpsx_scripts
+./uninstall_cpsx.sh
+</pre>
