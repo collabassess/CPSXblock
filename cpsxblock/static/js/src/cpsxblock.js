@@ -50,8 +50,8 @@ function CPSXBlock(runtime, element,data) {
             $("#collaborate").removeClass("button-warning");
             $("#collaborate").addClass("button-success");
 
-
             console.log("disconnected");
+            TogetherJS.require("storage").tab.clear("status");
             var handlerUrl = runtime.handlerUrl(element, 'removeFromUserPool');
             $.ajax({
                 type: "POST",
@@ -302,7 +302,6 @@ function CPSXBlock(runtime, element,data) {
             //getAvailableUsers();
             setTimeout(checkTogetherJsStatus, 3000);
             // printCourseid();
-
             console.log(window.localStorage);
 
             console.log("collab_type:"+data.collab_type);
