@@ -33,6 +33,7 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE VIEW `get_available_partners` AS SELECT 
  1 AS `user_id`,
+ 1 AS `demo_shark_jet`,
  1 AS `gender`*/;
 SET character_set_client = @saved_cs_client;
 
@@ -52,7 +53,7 @@ CREATE TABLE `user_groups` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`session_id`,`course_id`),
   UNIQUE KEY `session_id` (`session_id`,`course_id`,`user1`,`user2`,`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +80,7 @@ DROP TABLE IF EXISTS `user_info`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_info` (
   `user_id` int(11) NOT NULL DEFAULT '0',
-  `gender` varchar(30) NOT NULL,
+  `demo_shark_jet` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -182,12 +183,12 @@ USE `collab_assess`;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 SET character_set_client      = latin1 */;
+/*!50001 SET character_set_results     = latin1 */;
+/*!50001 SET collation_connection      = latin1_swedish_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `get_available_partners` AS select `s`.`user_id` AS `user_id`,`i`.`gender` AS `gender` from (`user_status` `s` join `user_info` `i`) where ((`s`.`user_id` = `i`.`user_id`) and (`s`.`status` = 'online') and (`s`.`grouped` = 0)) */;
+/*!50001 VIEW `get_available_partners` AS select `s`.`user_id` AS `user_id`,`i`.`demo_shark_jet` AS `demo_shark_jet`,`a`.`gender` AS `gender` from ((`collab_assess`.`user_status` `s` join `collab_assess`.`user_info` `i`) join `edxapp`.`auth_userprofile` `a`) where ((`s`.`user_id` = `i`.`user_id`) and (`i`.`user_id` = `a`.`id`) and (`s`.`status` = 'online') and (`s`.`grouped` = 0)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -201,4 +202,4 @@ USE `collab_assess`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-08 16:29:36
+-- Dump completed on 2018-04-17 18:41:18
