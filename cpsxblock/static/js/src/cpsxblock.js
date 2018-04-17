@@ -44,38 +44,37 @@ function CPSXBlock(runtime, element,data) {
     function toggleButton(callback){
         // togetherjs is not running anymore
         if(TogetherJS.running){
-            $("#btn-content").text("Collaborate with a partner");
-            $("#find_partner").text("CPSX - Find partner");
-            $("#collaborate").removeClass("button-error");
-            $("#collaborate").removeClass("button-warning");
-            $("#collaborate").addClass("button-success");
-
-            console.log("disconnected");
-            TogetherJS.require("storage").tab.clear("status");
-            var handlerUrl = runtime.handlerUrl(element, 'removeFromUserPool');
-            $.ajax({
-                type: "POST",
-                url: handlerUrl,
-                data: JSON.stringify({"hello": "world"}),
-                success: function(result){
-                    console.log("remove from user PoolL",result);
-                },
-                error: function (request, status, error) {
-                    console.log(error);
-                    console.log(status);
-                    console.log(request.responseText);
-                }
-            });
-            clearInterval(handle);
-            if(typeof getUserHandle !== 'undefined'){
-                clearInterval(getUserHandle);
-            }
-            if(handle == 0){
-                console.log("handle cleared");
-            }else{
-                console.log(handle);
-            }
-            updateToDefaultCohort();
+            // $("#btn-content").text("Collaborate with a partner");
+            // $("#find_partner").text("CPSX - Find partner");
+            // $("#collaborate").removeClass("button-error");
+            // $("#collaborate").removeClass("button-warning");
+            // $("#collaborate").addClass("button-success");
+            //
+            // console.log("disconnected");
+            // var handlerUrl = runtime.handlerUrl(element, 'removeFromUserPool');
+            // $.ajax({
+            //     type: "POST",
+            //     url: handlerUrl,
+            //     data: JSON.stringify({"hello": "world"}),
+            //     success: function(result){
+            //         console.log("remove from user PoolL",result);
+            //     },
+            //     error: function (request, status, error) {
+            //         console.log(error);
+            //         console.log(status);
+            //         console.log(request.responseText);
+            //     }
+            // });
+            // clearInterval(handle);
+            // if(typeof getUserHandle !== 'undefined'){
+            //     clearInterval(getUserHandle);
+            // }
+            // if(handle == 0){
+            //     console.log("handle cleared");
+            // }else{
+            //     console.log(handle);
+            // }
+            // updateToDefaultCohort();
             callback(1);
         }
         else{ //together js has started running
@@ -207,8 +206,7 @@ function CPSXBlock(runtime, element,data) {
                         if(typeof getUserHandle !== 'undefined'){
                             clearInterval(getUserHandle);
                         }
-                        $("#find_partner").text("partner found, to proceed click collaborate");
-                        snackbar("room found with id:"+result.room);
+                        snackbar("room found with id:"+result.room+", to proceed click collaborate");
                         if(window.localStorage) {
                                 var t_id = String(result.s_id+"."+result.s_session);
                                 window.localStorage.setItem("togetherjs.room",String(result.room));
@@ -266,12 +264,24 @@ function CPSXBlock(runtime, element,data) {
                 $("#collaborate").removeClass("button-success");
                 $("#collaborate").removeClass("button-warning");
                 $("#collaborate").addClass("button-error");
+                $("#collaborate").show();
+                $("#find_partner").hide();
+
             }else{
-                snackbar("Not connected to anyone yet!");
-                $("#btn-content").text("Collaborate with a partner")
-                $("#collaborate").removeClass("button-error");
-                $("#collaborate").removeClass("button-warning");
-                $("#collaborate").addClass("button-success");
+                getRoom(function (res) { //if no room is ready to connect yet
+                    if(!res){
+                        snackbar("Not connected to anyone yet!");
+                        $("#collaborate").hide();
+                        $("#find_partner").show();
+                    }else{
+                        $("#collaborate").show();
+                        $("#find_partner").hide();
+                        $("#btn-content").text("Collaborate with a partner")
+                        $("#collaborate").removeClass("button-error");
+                        $("#collaborate").removeClass("button-warning");
+                        $("#collaborate").addClass("button-success");
+                    }
+                });
             }
     }
 
@@ -298,8 +308,16 @@ function CPSXBlock(runtime, element,data) {
     //         });
     // }
 
+    /*
+        $("#collaborate").hide();
+        $("#collaborate").show();
+        $("#find_partner").hide();
+        $("#find_partner").show();
+    */
+
     $(function ($) {
             //getAvailableUsers();
+            snackbar("loading...");
             setTimeout(checkTogetherJsStatus, 3000);
             // printCourseid();
             console.log(window.localStorage);
@@ -334,12 +352,6 @@ function CPSXBlock(runtime, element,data) {
 
             TogetherJSConfig_hubBase = "https://calm-escarpment-25279.herokuapp.com/";
 
-            getRoom(function (res) {
-                console.log("here i am _:"+res);
-                console.log("froom1:"+TogetherJS.config.get("findRoom"));
-            });
-
-
             var handlerStudentUrl = runtime.handlerUrl(element, 'returnUserName');
             $.ajax({
                 type: "POST",
@@ -353,6 +365,40 @@ function CPSXBlock(runtime, element,data) {
                 }
             });
 
+            TogetherJS.on("close", function () {
+                console.log("closing togetherjs");
+                TogetherJS.require("storage").tab.clear("status");
+                $("#btn-content").text("Collaborate with a partner");
+                $("#find_partner").text("CPSX - Find partner");
+                $("#collaborate").removeClass("button-error");
+                $("#collaborate").removeClass("button-warning");
+                $("#collaborate").addClass("button-success");
+                console.log("disconnected");
+                var handlerUrl = runtime.handlerUrl(element, 'removeFromUserPool');
+                $.ajax({
+                    type: "POST",
+                    url: handlerUrl,
+                    data: JSON.stringify({"hello": "world"}),
+                    success: function(result){
+                        console.log("remove from user PoolL",result);
+                    },
+                    error: function (request, status, error) {
+                        console.log(error);
+                        console.log(status);
+                        console.log(request.responseText);
+                    }
+                });
+                clearInterval(handle);
+                if(typeof getUserHandle !== 'undefined'){
+                    clearInterval(getUserHandle);
+                }
+                if(handle == 0){
+                    console.log("handle cleared");
+                }else{
+                    console.log(handle);
+                }
+                updateToDefaultCohort();
+            });
 
 
 
