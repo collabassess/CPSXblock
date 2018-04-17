@@ -35,7 +35,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     Matching_Algorithm = String(
         default="FCFS", scope=Scope.settings,
         help="matching algorithm - do not select gender variables, the functionality to automate disabling those variables, if genders for all users are not available, is yet to be implemented",
-        values=('FCFS', 'demoSharkJet-homogeneous','demoSharkJet-homogeneous','gender-homogeneous', 'gender-heterogeneous')
+        values=('FCFS', 'demoSharkJet-homogeneous','demoSharkJet-heterogeneous','gender-homogeneous', 'gender-heterogeneous')
     )
 
     Group_Size = String(
