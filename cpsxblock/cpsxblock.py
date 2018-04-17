@@ -34,8 +34,8 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
 
     Matching_Algorithm = String(
         default="FCFS", scope=Scope.settings,
-        help="matching algorithm",
-        values=('FCFS', 'gender-homogeneous', 'gender-heterogeneous')
+        help="matching algorithm - do not select gender variables, the functionality to automate disabling those variables, if genders for all users are not available, is yet to be implemented",
+        values=('FCFS', 'demoSharkJet-homogeneous','demoSharkJet-homogeneous','gender-homogeneous', 'gender-heterogeneous')
     )
 
     Group_Size = String(
@@ -80,21 +80,6 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         return frag
 
 
-    # TO-DO: change this handler to perform your own actions.  You may need more
-    # than one handler, or you may not need any handlers at all.
-    # @XBlock.json_handler
-    # def returnRoom(self, data, suffix=''):
-    #     """
-    #     a handler which returns the chat room name.
-    #     """
-    #     curr_user = self.get_userid()
-    #     data = {'curr_user': curr_user}
-    #     response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/users/initializeRoom",
-    #                              json=data)
-    #     room = str(response.text)
-    #     log.error("response is", room)
-    #     session = room.split("_")[1];
-    #     return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": session}
 
     @property
     def course_id(self):
