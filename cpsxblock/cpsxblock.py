@@ -23,7 +23,6 @@ import MySQLdb
 import settings as s
 import requests
 
-
 # @XBlock.needs('fs')
 @XBlock.needs("i18n")
 @XBlock.wants('user')
@@ -78,7 +77,6 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         frag.add_javascript(self.resource_string("static/js/togetherjs-min.js"))
         frag.initialize_js('CPSXBlock', {'collab_type': self.Collaboration_Type})
         return frag
-
 
 
     @property

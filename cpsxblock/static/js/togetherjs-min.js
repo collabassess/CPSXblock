@@ -19,7 +19,7 @@
     // The code to enable (this is defaulting to a Mozilla code):
     analyticsCode: "UA-35433268-28",
     // The base URL of the hub (gets filled in below):
-    hubBase: null,
+    hubBase: "https://calm-escarpment-25279.herokuapp.com/",
     // A function that will return the name of the user:
     getUserName: null,
     // A function that will return the color of the user:
