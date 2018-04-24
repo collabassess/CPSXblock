@@ -75,7 +75,8 @@
 
   var styleSheet = "/togetherjs/togetherjs.css";
 
-  var baseUrl = "https://rawgit.com/collabassess/cpsx-togetherjs-client/master/build";
+  var baseUrl = "https://cpsx-togetherjs-client.herokuapp.com/build";
+
   if (baseUrl == "__" + "baseUrl__") {
     // Reset the variable if it doesn't get substituted
     baseUrl = "";
