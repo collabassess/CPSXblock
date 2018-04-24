@@ -19,7 +19,7 @@
     // The code to enable (this is defaulting to a Mozilla code):
     analyticsCode: "UA-35433268-28",
     // The base URL of the hub (gets filled in below):
-    hubBase: "https://calm-escarpment-25279.herokuapp.com/",
+    hubBase: "https://cpsx-hub.herokuapp.com/",
     // A function that will return the name of the user:
     getUserName: null,
     // A function that will return the color of the user:
@@ -75,7 +75,7 @@
 
   var styleSheet = "/togetherjs/togetherjs.css";
 
-  var baseUrl = "https://cpsx-togetherjs-client.herokuapp.com/build";
+  var baseUrl = "https://cpsx-ui.herokuapp.com/build";
 
   if (baseUrl == "__" + "baseUrl__") {
     // Reset the variable if it doesn't get substituted
@@ -489,7 +489,7 @@
     return "TogetherJS";
   };
 
-  var defaultHubBase = "https://calm-escarpment-25279.herokuapp.com/";
+  var defaultHubBase = "https://cpsx-hub.herokuapp.com/";
   if (defaultHubBase == "__" + "hubUrl"+ "__") {
     // Substitution wasn't made
     defaultHubBase = "https://hub.togetherjs.mozillalabs.com";
