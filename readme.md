@@ -25,6 +25,7 @@ Step 5: In advanced module list -> add "cpsxblock"
 
 ![advanced_settings](snapshots/advanced_settings.png)
 
+![block_diag](snapshots/cpsxDiagram.png)
 
 ## Updating CPSXBlock
 <pre>
