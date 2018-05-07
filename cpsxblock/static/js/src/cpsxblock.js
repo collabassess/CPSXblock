@@ -333,7 +333,7 @@ function CPSXBlock(runtime, element,data) {
 
             console.log(value);
 
-            selector.bind('DOMSubtreeModified',function () {
+            selector.bind('DOMSubtreeModified,DOMNodeInserted',function () {
                 console.log("submit button clicked");
                 console.log(value);
                 // selector.append("yo man ssup");
