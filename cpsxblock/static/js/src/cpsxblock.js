@@ -295,6 +295,10 @@ function CPSXBlock(runtime, element,data) {
             }
     }
 
+    $("#send").click(function () {
+        selector.append("<div>hi world</div>");
+    });
+
 
     function snackbar(message){
         $("#snackbar").addClass("show");
@@ -328,18 +332,17 @@ function CPSXBlock(runtime, element,data) {
 
     $(function ($) {
             //getAvailableUsers();
-            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response")
+            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem")
             value = selector.text();
 
-            console.log(value);
-
-            selector.bind('DOMSubtreeModified,DOMNodeInserted',function () {
+            selector.on('DOMNodeInserted',function () {
+                alert("updated");
                 console.log("submit button clicked");
                 console.log(value);
                 // selector.append("yo man ssup");
                 var value2 = selector.text();
                 console.log(compareString(value,value2));
-                var text = compareString(value,value2);
+                var text = compareString(value,value2).trim();
                 if(TogetherJS.running){
                     var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
                     var session = TogetherJS.require("session");
@@ -347,6 +350,7 @@ function CPSXBlock(runtime, element,data) {
                 }
                 return false;
             });
+            console.log(value);
 
             snackbar("loading...");
             setTimeout(checkTogetherJsStatus, 3000);
