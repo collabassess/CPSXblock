@@ -348,7 +348,7 @@ function CPSXBlock(runtime, element,data) {
     }
     $(function ($) {
             //getAvailableUsers();
-            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response #inputtype_d0413bf128374e90889b1a151aeec014_2_1");
+            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem");
             value = selector.text();
 
             selector.bind('DOMNodeInserted',sendAnswers);
