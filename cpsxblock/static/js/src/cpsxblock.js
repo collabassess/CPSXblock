@@ -331,6 +331,7 @@ function CPSXBlock(runtime, element,data) {
     */
 
     function sendAnswers(){
+        setTimeout(function () {
             alert("updated");
             console.log("submit button clicked");
             console.log(value);
@@ -343,7 +344,7 @@ function CPSXBlock(runtime, element,data) {
                 var session = TogetherJS.require("session");
                 session.send(msg);
             }
-            return false;
+        },6000);
     }
     $(function ($) {
             //getAvailableUsers();
