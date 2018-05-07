@@ -295,7 +295,7 @@ function CPSXBlock(runtime, element,data) {
             }
     }
 
-    $(".submit,#send").click(function () {
+    $(".submit").click(function () {
         console.log("submit button clicked");
         console.log(value);
         // selector.append("yo man ssup");
