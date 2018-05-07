@@ -3,6 +3,7 @@ function CPSXBlock(runtime, element,data) {
 
     var handle;
     var value;
+    var selector;
     function updateUserName(result) {
         console.log("inside the updateUserName fucntion with the username value:"+result.s_name+","+result.username+","+result.user_id);
         console.log(result.s_id+","+result.user_id+","+result.emails)
@@ -294,10 +295,11 @@ function CPSXBlock(runtime, element,data) {
             }
     }
 
-    $(".submit").click(function () {
+    $(".submit,#send").click(function () {
         console.log("submit button clicked");
         console.log(value);
-        var value2 = $("#problem_d0413bf128374e90889b1a151aeec014").text();
+        // selector.append("yo man ssup");
+        var value2 = selector.text();
         console.log(compareString(value,value2));
         var text = compareString(value,value2);
         if(TogetherJS.running){
@@ -340,7 +342,8 @@ function CPSXBlock(runtime, element,data) {
 
     $(function ($) {
             //getAvailableUsers();
-            value = $("#problem_d0413bf128374e90889b1a151aeec014").text();
+            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response")
+            value = selector.text();
 
             snackbar("loading...");
             setTimeout(checkTogetherJsStatus, 3000);
