@@ -297,7 +297,7 @@ function CPSXBlock(runtime, element,data) {
     $(".submit").click(function () {
         console.log("submit button clicked");
         console.log(value);
-        var value2 = $('[data-item-id="block-v1:NYU+DEMO_101+2018_T1+type@problem+block@00cec7af17c0459aa5e987783644369d"]').text();
+        var value2 = $("#problem_d0413bf128374e90889b1a151aeec014").text();
         console.log(compareString(value,value2));
         var text = compareString(value,value2);
         if(TogetherJS.running){
@@ -340,7 +340,7 @@ function CPSXBlock(runtime, element,data) {
 
     $(function ($) {
             //getAvailableUsers();
-            value = $('[data-item-id="block-v1:NYU+DEMO_101+2018_T1+type@problem+block@00cec7af17c0459aa5e987783644369d"]').text();
+            value = $("#problem_d0413bf128374e90889b1a151aeec014").text();
 
             snackbar("loading...");
             setTimeout(checkTogetherJsStatus, 3000);
