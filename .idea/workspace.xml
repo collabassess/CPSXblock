@@ -19,8 +19,8 @@
       <file leaf-file-name="cpsxblock.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="355" column="0" lean-forward="true" selection-start-line="355" selection-start-column="0" selection-end-line="355" selection-end-column="0" />
+            <state relative-caret-position="196">
+              <caret line="342" column="46" lean-forward="false" selection-start-line="342" selection-start-column="46" selection-end-line="342" selection-end-column="46" />
               <folding>
                 <element signature="n#!!block;n#updateUserName#0;n#!!block;n#CPSXBlock#0" expanded="false" />
                 <element signature="e#498#674#0" expanded="false" />
@@ -39,13 +39,13 @@
                 <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
                 <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
                 <element signature="e#11690#11718#0" expanded="false" />
-                <element signature="e#13651#13802#0" expanded="false" />
-                <element signature="e#13979#14021#0" expanded="false" />
-                <element signature="e#14133#14176#0" expanded="false" />
-                <element signature="e#14242#14284#0" expanded="false" />
-                <element signature="e#14344#14384#0" expanded="false" />
-                <element signature="e#14579#14977#0" expanded="false" />
-                <element signature="e#15624#16149#0" expanded="false" />
+                <element signature="e#13633#13784#0" expanded="false" />
+                <element signature="e#13961#14003#0" expanded="false" />
+                <element signature="e#14115#14158#0" expanded="false" />
+                <element signature="e#14224#14266#0" expanded="false" />
+                <element signature="e#14326#14366#0" expanded="false" />
+                <element signature="e#14561#14959#0" expanded="false" />
+                <element signature="e#15606#16131#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -484,13 +484,13 @@
             <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#11690#11718#0" expanded="false" />
-            <element signature="e#13651#13802#0" expanded="false" />
-            <element signature="e#13979#14021#0" expanded="false" />
-            <element signature="e#14133#14176#0" expanded="false" />
-            <element signature="e#14242#14284#0" expanded="false" />
-            <element signature="e#14344#14384#0" expanded="false" />
-            <element signature="e#14579#14977#0" expanded="false" />
-            <element signature="e#15624#16149#0" expanded="false" />
+            <element signature="e#13633#13784#0" expanded="false" />
+            <element signature="e#13961#14003#0" expanded="false" />
+            <element signature="e#14115#14158#0" expanded="false" />
+            <element signature="e#14224#14266#0" expanded="false" />
+            <element signature="e#14326#14366#0" expanded="false" />
+            <element signature="e#14561#14959#0" expanded="false" />
+            <element signature="e#15606#16131#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -594,13 +594,13 @@
             <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#11690#11718#0" expanded="false" />
-            <element signature="e#13651#13802#0" expanded="false" />
-            <element signature="e#13979#14021#0" expanded="false" />
-            <element signature="e#14133#14176#0" expanded="false" />
-            <element signature="e#14242#14284#0" expanded="false" />
-            <element signature="e#14344#14384#0" expanded="false" />
-            <element signature="e#14579#14977#0" expanded="false" />
-            <element signature="e#15624#16149#0" expanded="false" />
+            <element signature="e#13633#13784#0" expanded="false" />
+            <element signature="e#13961#14003#0" expanded="false" />
+            <element signature="e#14115#14158#0" expanded="false" />
+            <element signature="e#14224#14266#0" expanded="false" />
+            <element signature="e#14326#14366#0" expanded="false" />
+            <element signature="e#14561#14959#0" expanded="false" />
+            <element signature="e#15606#16131#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -673,13 +673,13 @@
             <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#11690#11718#0" expanded="false" />
-            <element signature="e#13651#13802#0" expanded="false" />
-            <element signature="e#13979#14021#0" expanded="false" />
-            <element signature="e#14133#14176#0" expanded="false" />
-            <element signature="e#14242#14284#0" expanded="false" />
-            <element signature="e#14344#14384#0" expanded="false" />
-            <element signature="e#14579#14977#0" expanded="false" />
-            <element signature="e#15624#16149#0" expanded="false" />
+            <element signature="e#13633#13784#0" expanded="false" />
+            <element signature="e#13961#14003#0" expanded="false" />
+            <element signature="e#14115#14158#0" expanded="false" />
+            <element signature="e#14224#14266#0" expanded="false" />
+            <element signature="e#14326#14366#0" expanded="false" />
+            <element signature="e#14561#14959#0" expanded="false" />
+            <element signature="e#15606#16131#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -737,13 +737,13 @@
             <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#11690#11718#0" expanded="false" />
-            <element signature="e#13651#13802#0" expanded="false" />
-            <element signature="e#13979#14021#0" expanded="false" />
-            <element signature="e#14133#14176#0" expanded="false" />
-            <element signature="e#14242#14284#0" expanded="false" />
-            <element signature="e#14344#14384#0" expanded="false" />
-            <element signature="e#14579#14977#0" expanded="false" />
-            <element signature="e#15624#16149#0" expanded="false" />
+            <element signature="e#13633#13784#0" expanded="false" />
+            <element signature="e#13961#14003#0" expanded="false" />
+            <element signature="e#14115#14158#0" expanded="false" />
+            <element signature="e#14224#14266#0" expanded="false" />
+            <element signature="e#14326#14366#0" expanded="false" />
+            <element signature="e#14561#14959#0" expanded="false" />
+            <element signature="e#15606#16131#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -876,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="355" column="0" lean-forward="true" selection-start-line="355" selection-start-column="0" selection-end-line="355" selection-end-column="0" />
+        <state relative-caret-position="196">
+          <caret line="342" column="46" lean-forward="false" selection-start-line="342" selection-start-column="46" selection-end-line="342" selection-end-column="46" />
           <folding>
             <element signature="n#!!block;n#updateUserName#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#498#674#0" expanded="false" />
@@ -896,13 +896,13 @@
             <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#11690#11718#0" expanded="false" />
-            <element signature="e#13651#13802#0" expanded="false" />
-            <element signature="e#13979#14021#0" expanded="false" />
-            <element signature="e#14133#14176#0" expanded="false" />
-            <element signature="e#14242#14284#0" expanded="false" />
-            <element signature="e#14344#14384#0" expanded="false" />
-            <element signature="e#14579#14977#0" expanded="false" />
-            <element signature="e#15624#16149#0" expanded="false" />
+            <element signature="e#13633#13784#0" expanded="false" />
+            <element signature="e#13961#14003#0" expanded="false" />
+            <element signature="e#14115#14158#0" expanded="false" />
+            <element signature="e#14224#14266#0" expanded="false" />
+            <element signature="e#14326#14366#0" expanded="false" />
+            <element signature="e#14561#14959#0" expanded="false" />
+            <element signature="e#15606#16131#0" expanded="false" />
           </folding>
         </state>
       </provider>

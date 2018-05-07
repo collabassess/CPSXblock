@@ -350,7 +350,7 @@ function CPSXBlock(runtime, element,data) {
             selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem");
             value = selector.text();
 
-            selector.bind('DOMNodeInserted',setTimeout(sendAnswers, 6000));
+            selector.bind('DOMNodeInserted',sendAnswers);
 
             console.log(value);
 
