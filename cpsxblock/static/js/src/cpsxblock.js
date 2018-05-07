@@ -295,20 +295,6 @@ function CPSXBlock(runtime, element,data) {
             }
     }
 
-    $(".submit").click(function () {
-        console.log("submit button clicked");
-        console.log(value);
-        // selector.append("yo man ssup");
-        var value2 = selector.text();
-        console.log(compareString(value,value2));
-        var text = compareString(value,value2);
-        if(TogetherJS.running){
-            var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
-            var session = TogetherJS.require("session");
-            session.send(msg);
-        }
-        return false;
-    });
 
     function snackbar(message){
         $("#snackbar").addClass("show");
@@ -344,6 +330,23 @@ function CPSXBlock(runtime, element,data) {
             //getAvailableUsers();
             selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response")
             value = selector.text();
+
+            console.log(value);
+
+            selector.bind('DOMSubtreeModified',(function () {
+                console.log("submit button clicked");
+                console.log(value);
+                // selector.append("yo man ssup");
+                var value2 = selector.text();
+                console.log(compareString(value,value2));
+                var text = compareString(value,value2);
+                if(TogetherJS.running){
+                    var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
+                    var session = TogetherJS.require("session");
+                    session.send(msg);
+                }
+                return false;
+            });
 
             snackbar("loading...");
             setTimeout(checkTogetherJsStatus, 3000);
