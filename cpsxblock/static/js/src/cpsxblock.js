@@ -335,7 +335,7 @@ function CPSXBlock(runtime, element,data) {
             selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem")
             value = selector.text();
 
-            selector.bind('DOMNodeInserted',function () {
+            selector.bind('DOMNodeInserted',setTimeout(function () {
                 alert("updated");
                 console.log("submit button clicked");
                 console.log(value);
@@ -349,7 +349,8 @@ function CPSXBlock(runtime, element,data) {
                     session.send(msg);
                 }
                 return false;
-            }).delay(1500);
+            },8000));
+
             console.log(value);
 
             snackbar("loading...");
