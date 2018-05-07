@@ -2,7 +2,7 @@
 function CPSXBlock(runtime, element,data) {
 
     var handle;
-
+    var value;
     function updateUserName(result) {
         console.log("inside the updateUserName fucntion with the username value:"+result.s_name+","+result.username+","+result.user_id);
         console.log(result.s_id+","+result.user_id+","+result.emails)
@@ -251,6 +251,14 @@ function CPSXBlock(runtime, element,data) {
         }
     });
 
+
+    function compareString(str1, str2){
+        var lendiff = str2.length - str1.length;
+
+        return str2.substr(str1.length,lendiff);
+
+    }
+
     function checkTogetherJsStatus(){
 
             if(TogetherJS.running){
@@ -266,6 +274,7 @@ function CPSXBlock(runtime, element,data) {
                 $("#collaborate").addClass("button-error");
                 $("#collaborate").show();
                 $("#find_partner").hide();
+
 
             }else{
                 getRoom(function (res) { //if no room is ready to connect yet
@@ -284,6 +293,20 @@ function CPSXBlock(runtime, element,data) {
                 });
             }
     }
+
+    $(".submit").click(function () {
+        console.log("submit button clicked");
+        console.log(value);
+        var value2 = $('[data-item-id="block-v1:NYU+DEMO_101+2018_T1+type@problem+block@00cec7af17c0459aa5e987783644369d"]').text();
+        console.log(compareString(value,value2));
+        var text = compareString(value,value2);
+        if(TogetherJS.running){
+            var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
+            var session = TogetherJS.require("session");
+            session.send(msg);
+        }
+        return false;
+    });
 
     function snackbar(message){
         $("#snackbar").addClass("show");
@@ -317,6 +340,8 @@ function CPSXBlock(runtime, element,data) {
 
     $(function ($) {
             //getAvailableUsers();
+            value = $('[data-item-id="block-v1:NYU+DEMO_101+2018_T1+type@problem+block@00cec7af17c0459aa5e987783644369d"]').text();
+
             snackbar("loading...");
             setTimeout(checkTogetherJsStatus, 3000);
             // printCourseid();

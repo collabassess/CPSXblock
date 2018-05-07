@@ -625,7 +625,7 @@
   TogetherJS.hub = TogetherJS._mixinEvents({});
 
   TogetherJS._onmessage = function (msg) {
-    var type = msg.type;
+    console.log("is caht msg caught",msg.type);    var type = msg.type;
     if (type.search(/^app\./) === 0) {
       type = type.substr("app.".length);
     } else {
@@ -639,6 +639,7 @@
     if (! TogetherJS.require) {
       throw "You cannot use TogetherJS.send() when TogetherJS is not running";
     }
+
     var session = TogetherJS.require("session");
     session.appSend(msg);
   };
