@@ -330,26 +330,27 @@ function CPSXBlock(runtime, element,data) {
         $("#find_partner").show();
     */
 
+    function sendAnswers(){
+            alert("updated");
+            console.log("submit button clicked");
+            console.log(value);
+            // selector.append("yo man ssup");
+            var value2 = selector.text();
+            console.log(compareString(value,value2));
+            var text = compareString(value,value2).trim();
+            if(TogetherJS.running){
+                var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
+                var session = TogetherJS.require("session");
+                session.send(msg);
+            }
+            return false;
+    }
     $(function ($) {
             //getAvailableUsers();
-            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem")
+            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem");
             value = selector.text();
 
-            selector.bind('DOMNodeInserted',setTimeout(function () {
-                alert("updated");
-                console.log("submit button clicked");
-                console.log(value);
-                // selector.append("yo man ssup");
-                var value2 = selector.text();
-                console.log(compareString(value,value2));
-                var text = compareString(value,value2).trim();
-                if(TogetherJS.running){
-                    var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
-                    var session = TogetherJS.require("session");
-                    session.send(msg);
-                }
-                return false;
-            },8000));
+            selector.bind('DOMNodeInserted',setTimeout(sendAnswers, 6000));
 
             console.log(value);
 
