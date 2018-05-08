@@ -368,17 +368,16 @@ function CPSXBlock(runtime, element,data) {
                             text = "Question "+title[1]+": Your Partner chose:"+text;
                             if(TogetherJS.running && text !== value){
                                 var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
-                                var submit_event_msg = {
+                                var session = TogetherJS.require("session");
+                                session.send(msg);
+                            }
+                        }
+                        var submit_event_msg = {
                                         type: "form_submit_event",
                                         question: title[1],
                                         course: title[2]
-                                    }
-                                var session = TogetherJS.require("session");
-                                session.send(msg);
-                                TogetherJS.send(submit_event_msg);
-                            }
-                        }
-
+                                    };
+                        TogetherJS.send(submit_event_msg);
                     },3000);
                 });
             }
