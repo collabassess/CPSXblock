@@ -367,7 +367,7 @@ function CPSXBlock(runtime, element,data) {
                         if(text !== ""){
                             text = "Question "+title[1]+": Your Partner chose:"+text;
                             if(TogetherJS.running && text !== value){
-                                var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
+                                var msg = {type: "chat", text: text};
                                 var session = TogetherJS.require("session");
                                 session.send(msg);
                             }
