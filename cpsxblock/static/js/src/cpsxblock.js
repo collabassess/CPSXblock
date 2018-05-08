@@ -296,9 +296,9 @@ function CPSXBlock(runtime, element,data) {
             }
     }
 
-    $("#send").click(function () {
-        selector.append("<div>hi world</div>");
-    });
+    // $("#send").click(function () {
+    //     selector.append("<div>hi world</div>");
+    // });
 
 
     function snackbar(message){
@@ -331,19 +331,6 @@ function CPSXBlock(runtime, element,data) {
         $("#find_partner").show();
     */
 
-    $(".submit,#send").click(function () {
-        setTimeout(function () {
-            console.log(selector);
-            var text = $(selector).text().trim();
-            console.log(text);
-            if(TogetherJS.running && text !== value){
-                var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
-                var session = TogetherJS.require("session");
-                session.send(msg);
-            }
-        },3000);
-    });
-
     // function sendAnswers(){
     //     setTimeout(function () {
     //         alert("updated");
@@ -362,20 +349,29 @@ function CPSXBlock(runtime, element,data) {
     // }
 
     $(function ($) {
-            //getAvailableUsers();
 
-            selector_str = "#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response #inputtype_d0413bf128374e90889b1a151aeec014_2_1 ";
-            // selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response");
-            selector = "#problem_d0413bf128374e90889b1a151aeec014 .message";
-            if($(selector).length){
-                value = $(selector).text().trim();
-                console.log(value);
+            if(data.shareable_hints !== ''){
+                selector = "#problem_"+data.shareable_hints+" .message";
+                if($(selector).length){
+                    value = $(selector).text().trim();
+                    console.log(value);
+                }
+
+                console.log(selector);
+                $(".submit,#send").click(function () {
+                    setTimeout(function () {
+                        console.log(selector);
+                        var text = $(selector).text().trim();
+                        console.log(text);
+                        text = "Your Partner chose:"+text;
+                        if(TogetherJS.running && text !== value){
+                            var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
+                            var session = TogetherJS.require("session");
+                            session.send(msg);
+                        }
+                    },3000);
+                });
             }
-
-
-            // selector.bind('DOMNodeInserted',sendAnswers);
-
-            console.log(value);
 
             snackbar("loading...");
             setTimeout(checkTogetherJsStatus, 3000);

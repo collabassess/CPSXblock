@@ -45,8 +45,12 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         default='chat', scope=Scope.settings,
         help="accepted values: chat(for chat only),audio(for both chat and audio)"
     )
+    Shareable_Hint_Block_Code = String(
+        default='d0413bf128374e90889b1a151aeec014', scope = Scope.settings,
+        help ="if you want to assign partners one hint each, enter the code for block containing hints section, so that selected hints will be shared amongst partners!"
+    )
 
-    editable_fields = ('Matching_Algorithm','Group_Size','Collaboration_Type')
+    editable_fields = ('Matching_Algorithm','Group_Size','Collaboration_Type','Shareable_Hint_Block_Code')
     # Fields are defined on the class.  You can access them in your code as
     # self.<fieldname>.
 
@@ -75,7 +79,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         frag.add_css(self.resource_string("static/css/cpsxblock.css"))
         frag.add_javascript(self.resource_string("static/js/src/cpsxblock.js"))
         frag.add_javascript(self.resource_string("static/js/togetherjs-min.js"))
-        frag.initialize_js('CPSXBlock', {'collab_type': self.Collaboration_Type})
+        frag.initialize_js('CPSXBlock', {'collab_type': self.Collaboration_Type, 'shareable_hints':self.Shareable_Hint_Block_Code})
         return frag
 
 
