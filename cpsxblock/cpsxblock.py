@@ -52,11 +52,11 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
 
     theme_shared_content = String(
         default = '', scope = Scope.settings,
-        help = "stylize blocks which are shared amongst patners, enter comma separated componenet ID location: e.g: block-v1:NYU+DEMO_101+2018_T1+type@problem+block@078DE_COL_H2"
+        help = "stylize blocks which are shared amongst patners, enter comma separated serial number of component - 0,1,2,3..."
     )
     theme_unique_content = String(
         default='', scope=Scope.settings,
-        help="stylize blocks which are unique amongst patners, enter comma separated componenet ID location: e.g: block-v1:NYU+DEMO_101+2018_T1+type@problem+block@078DE_COL_H2"
+        help="stylize blocks which are unique amongst patners, enter comma separated serial number of component - 0,1,2,3..."
     )
 
     editable_fields = ('Matching_Algorithm',

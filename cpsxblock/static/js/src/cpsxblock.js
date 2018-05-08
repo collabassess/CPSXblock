@@ -65,13 +65,13 @@ function CPSXBlock(runtime, element,data) {
         var share_str = data.shared_blocks;
         share_str_arr = share_str.split(",");
         share_str_arr.forEach(function (item,index) {
-            $('[data-id=' + item + ']').addClass("shared-content");
+            $('.vert-'+item).addClass("shared-content");
         });
 
         var unique_str = data.unique_blocks;
         unique_str_arr = share_str.split(",");
         unique_str_arr.forEach(function (item,index) {
-            $('[data-id=' + item + ']').addClass("unique-content");
+            $('.vert-'+item).addClass("unique-content");
         });
     }
 
@@ -79,13 +79,13 @@ function CPSXBlock(runtime, element,data) {
         var share_str = data.shared_blocks;
         share_str_arr = share_str.split(",");
         share_str_arr.forEach(function (item,index) {
-            $('[data-id=' + item + ']').removeClass("shared-content");
+            $('.vert-'+item).removeClass("shared-content");
         });
 
         var unique_str = data.unique_blocks;
         unique_str_arr = share_str.split(",");
         unique_str_arr.forEach(function (item,index) {
-            $('[data-id=' + item + ']').removeClass("unique-content");
+            $('.vert-'+item).removeClass("unique-content");
         });
 
     }
