@@ -358,18 +358,27 @@ function CPSXBlock(runtime, element,data) {
                 }
 
                 console.log(selector);
-                $(".submit,#send").click(function () {
+                $(".submit").click(function () {
                     setTimeout(function () {
                         console.log(selector);
                         var text = $(selector).text().trim();
                         console.log(text);
                         var title = document.title.split("|");
-                        text = "Question "+title+": Your Partner chose:"+text;
-                        if(TogetherJS.running && text !== value){
-                            var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
-                            var session = TogetherJS.require("session");
-                            session.send(msg);
+                        if(text !== ""){
+                            text = "Question "+title[1]+": Your Partner chose:"+text;
+                            if(TogetherJS.running && text !== value){
+                                var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
+                                var submit_event_msg = {
+                                        type: "form_submit_event",
+                                        question: title[1],
+                                        course: title[2]
+                                    }
+                                var session = TogetherJS.require("session");
+                                session.send(msg);
+                                session.send(submit_event_msg);
+                            }
                         }
+
                     },3000);
                 });
             }
