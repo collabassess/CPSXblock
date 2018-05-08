@@ -79,13 +79,13 @@ function CPSXBlock(runtime, element,data) {
         var share_str = data.shared_blocks;
         share_str_arr = share_str.split(",");
         share_str_arr.forEach(function (item,index) {
-            $('[data-item-id='+item+']').removeClass("shared-content");
+            $('[data-item-id=item]').removeClass("shared-content");
         });
 
         var unique_str = data.unique_blocks;
         unique_str_arr = share_str.split(",");
         unique_str_arr.forEach(function (item,index) {
-            $('[data-item-id='+item+']').removeClass("unique-content");
+            $('[data-item-id=item]').removeClass("unique-content");
         });
 
     }
