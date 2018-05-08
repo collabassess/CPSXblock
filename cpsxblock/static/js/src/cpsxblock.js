@@ -375,7 +375,7 @@ function CPSXBlock(runtime, element,data) {
                                     }
                                 var session = TogetherJS.require("session");
                                 session.send(msg);
-                                session.send(submit_event_msg);
+                                TogetherJS.send(submit_event_msg);
                             }
                         }
 
