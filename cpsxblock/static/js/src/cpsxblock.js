@@ -363,7 +363,8 @@ function CPSXBlock(runtime, element,data) {
                         console.log(selector);
                         var text = $(selector).text().trim();
                         console.log(text);
-                        text = "Your Partner chose:"+text;
+                        var title = document.title.split("|");
+                        text = "Question "+title+": Your Partner chose:"+text;
                         if(TogetherJS.running && text !== value){
                             var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
                             var session = TogetherJS.require("session");
