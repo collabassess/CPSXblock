@@ -69,7 +69,7 @@ function CPSXBlock(runtime, element,data) {
         });
 
         var unique_str = data.unique_blocks;
-        unique_str_arr = share_str.split(",");
+        unique_str_arr = unique_str.split(",");
         unique_str_arr.forEach(function (item,index) {
             $('.vert-'+item).addClass("unique-content");
         });
@@ -83,7 +83,7 @@ function CPSXBlock(runtime, element,data) {
         });
 
         var unique_str = data.unique_blocks;
-        unique_str_arr = share_str.split(",");
+        unique_str_arr = unique_str.split(",");
         unique_str_arr.forEach(function (item,index) {
             $('.vert-'+item).removeClass("unique-content");
         });
