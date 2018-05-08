@@ -319,7 +319,7 @@ function CPSXBlock(runtime, element,data) {
                 }
 
                 console.log(selector);
-                $(".submit").click(function () {
+                $("#problem_"+data.shareable_hints+" .submit").click(function () {
                     setTimeout(function () {
                         console.log(selector);
                         var text = $(selector).text().trim();
