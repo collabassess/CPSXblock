@@ -74,3 +74,14 @@
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
+
+
+.shared-content{
+  background-color: #daff9d;
+  color: #ffffff;
+}
+
+.unique-content{
+  background-color: #bda8ff;
+  color: #ffffff;
+}

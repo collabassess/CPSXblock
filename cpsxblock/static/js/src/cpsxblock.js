@@ -46,37 +46,7 @@ function CPSXBlock(runtime, element,data) {
     function toggleButton(callback){
         // togetherjs is not running anymore
         if(TogetherJS.running){
-            // $("#btn-content").text("Collaborate with a partner");
-            // $("#find_partner").text("CPSX - Find partner");
-            // $("#collaborate").removeClass("button-error");
-            // $("#collaborate").removeClass("button-warning");
-            // $("#collaborate").addClass("button-success");
-            //
-            // console.log("disconnected");
-            // var handlerUrl = runtime.handlerUrl(element, 'removeFromUserPool');
-            // $.ajax({
-            //     type: "POST",
-            //     url: handlerUrl,
-            //     data: JSON.stringify({"hello": "world"}),
-            //     success: function(result){
-            //         console.log("remove from user PoolL",result);
-            //     },
-            //     error: function (request, status, error) {
-            //         console.log(error);
-            //         console.log(status);
-            //         console.log(request.responseText);
-            //     }
-            // });
-            // clearInterval(handle);
-            // if(typeof getUserHandle !== 'undefined'){
-            //     clearInterval(getUserHandle);
-            // }
-            // if(handle == 0){
-            //     console.log("handle cleared");
-            // }else{
-            //     console.log(handle);
-            // }
-            // updateToDefaultCohort();
+            remove_theme();
             callback(1);
         }
         else{ //together js has started running
@@ -85,11 +55,40 @@ function CPSXBlock(runtime, element,data) {
             $("#collaborate").removeClass("button-success");
             $("#collaborate").removeClass("button-warning");
             $("#collaborate").addClass("button-error");
+            assign_theme();
             callback(1);
         }
 
     }
 
+    function assign_theme() {
+        var share_str = data.shared_blocks;
+        share_str_arr = share_str.split(",");
+        share_str_arr.forEach(function (item,index) {
+            $('[data-item-id='+item+']').addClass("shared-content");
+        });
+
+        var unique_str = data.unique_blocks;
+        unique_str_arr = share_str.split(",");
+        unique_str_arr.forEach(function (item,index) {
+            $('[data-item-id='+item+']').addClass("unique-content");
+        });
+    }
+
+    function remove_theme() {
+        var share_str = data.shared_blocks;
+        share_str_arr = share_str.split(",");
+        share_str_arr.forEach(function (item,index) {
+            $('[data-item-id='+item+']').removeClass("shared-content");
+        });
+
+        var unique_str = data.unique_blocks;
+        unique_str_arr = share_str.split(",");
+        unique_str_arr.forEach(function (item,index) {
+            $('[data-item-id='+item+']').removeClass("unique-content");
+        });
+
+    }
     function enter_online_pool(){
         //add user to the online pool;
         console.log("connected");
@@ -307,46 +306,7 @@ function CPSXBlock(runtime, element,data) {
         setTimeout(function(){ $("#snackbar").removeClass("show"); }, 3000);
     }
 
-    // function printCourseid(){
-    //     var handlerUrl = runtime.handlerUrl(element, 'returnCourseId');
-    //     $.ajax({
-    //             type: "POST",
-    //             url: handlerUrl,
-    //             data: JSON.stringify({"hello": "world"}),
-    //             success: function(result){
-    //                 console.log("course_id:",result);
-    //             },
-    //             error: function (request, status, error) {
-    //                 console.log(error);
-    //                 console.log(status);
-    //                 console.log(request.responseText);
-    //             }
-    //         });
-    // }
 
-    /*
-        $("#collaborate").hide();
-        $("#collaborate").show();
-        $("#find_partner").hide();
-        $("#find_partner").show();
-    */
-
-    // function sendAnswers(){
-    //     setTimeout(function () {
-    //         alert("updated");
-    //         console.log("submit button clicked");
-    //         console.log(value);
-    //         // selector.append("yo man ssup");
-    //         var value2 = selector.text();
-    //         console.log(compareString(value,value2));
-    //         var text = compareString(value,value2).trim();
-    //         if(TogetherJS.running){
-    //             var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
-    //             var session = TogetherJS.require("session");
-    //             session.send(msg);
-    //         }
-    //     },6000);
-    // }
 
     $(function ($) {
 

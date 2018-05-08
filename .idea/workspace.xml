@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42d8fc76-76d3-4018-b1a5-e46fc79677a5" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/cpsxblock/cpsxblock.py" afterPath="$PROJECT_DIR$/cpsxblock/cpsxblock.py" />
+      <change beforePath="$PROJECT_DIR$/cpsxblock/static/css/cpsxblock.css" afterPath="$PROJECT_DIR$/cpsxblock/static/css/cpsxblock.css" />
       <change beforePath="$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js" afterPath="$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,34 +22,40 @@
       <file leaf-file-name="cpsxblock.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="371" column="50" lean-forward="true" selection-start-line="371" selection-start-column="50" selection-end-line="371" selection-end-column="50" />
+            <state relative-caret-position="-195">
+              <caret line="48" column="27" lean-forward="false" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
               <folding>
                 <element signature="n#!!block;n#updateUserName#0;n#!!block;n#CPSXBlock#0" expanded="false" />
                 <element signature="e#512#688#0" expanded="false" />
                 <element signature="e#757#791#0" expanded="false" />
                 <element signature="n#!!block;n#updateLastActivity#0;n#!!block;n#CPSXBlock#0" expanded="false" />
                 <element signature="e#1008#1492#0" expanded="false" />
-                <element signature="n#!!block;n#toggleButton#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-                <element signature="e#1628#1684#0" expanded="false" />
                 <element signature="n#!!block;n#enter_online_pool#0;n#!!block;n#CPSXBlock#0" expanded="false" />
                 <element signature="n#!!block;n#pairMatch#0;n#!!block;n#CPSXBlock#0" expanded="false" />
                 <element signature="n#!!block;n#updateToDefaultCohort#0;n#!!block;n#CPSXBlock#0" expanded="false" />
                 <element signature="n#!!block;n#getAvailableUsers#0;n#!!block;n#CPSXBlock#0" expanded="false" />
                 <element signature="n#!!block;n#getRoom#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-                <element signature="e#9072#9245#0" expanded="false" />
-                <element signature="e#9290#9809#0" expanded="false" />
+                <element signature="e#8973#9492#0" expanded="false" />
                 <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
                 <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-                <element signature="e#11713#11741#0" expanded="false" />
-                <element signature="e#14968#15119#0" expanded="false" />
-                <element signature="e#15296#15338#0" expanded="false" />
-                <element signature="e#15450#15493#0" expanded="false" />
-                <element signature="e#15559#15601#0" expanded="false" />
-                <element signature="e#15661#15701#0" expanded="false" />
-                <element signature="e#15896#16294#0" expanded="false" />
-                <element signature="e#16941#17466#0" expanded="false" />
+                <element signature="e#13169#13320#0" expanded="false" />
+                <element signature="e#13497#13539#0" expanded="false" />
+                <element signature="e#13651#13694#0" expanded="false" />
+                <element signature="e#13760#13802#0" expanded="false" />
+                <element signature="e#13862#13902#0" expanded="false" />
+                <element signature="e#14097#14495#0" expanded="false" />
+                <element signature="e#15142#15667#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="google-fonts.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cpsxblock/static/css/google-fonts.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,7 +73,7 @@
       <file leaf-file-name="togetherjs-min.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cpsxblock/static/js/togetherjs-min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
+            <state relative-caret-position="1298">
               <caret line="699" column="50" lean-forward="false" selection-start-line="699" selection-start-column="50" selection-end-line="699" selection-end-column="50" />
               <folding />
             </state>
@@ -84,8 +93,8 @@
       <file leaf-file-name="cpsxblock.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cpsxblock/cpsxblock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+            <state relative-caret-position="375">
+              <caret line="97" column="55" lean-forward="false" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="55" />
               <folding>
                 <element signature="e#57#72#0" expanded="true" />
               </folding>
@@ -97,7 +106,7 @@
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="585">
+              <first_editor relative-caret-position="453">
                 <caret line="39" column="6" lean-forward="false" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
                 <folding />
               </first_editor>
@@ -109,8 +118,8 @@
       <file leaf-file-name="cpsxblock.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cpsxblock/static/css/cpsxblock.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="51" column="14" lean-forward="false" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="14" />
+            <state relative-caret-position="397">
+              <caret line="78" column="15" lean-forward="false" selection-start-line="78" selection-start-column="1" selection-end-line="78" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -166,13 +175,13 @@
       <list>
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/cpsxblock/static/js/materialize.min.css" />
-        <option value="$PROJECT_DIR$/cpsxblock/static/css/google-fonts.css" />
         <option value="$PROJECT_DIR$/cpsxblock/static/js/materialize.min.js" />
-        <option value="$PROJECT_DIR$/cpsxblock/static/css/cpsxblock.css" />
         <option value="$PROJECT_DIR$/cpsxblock/settings.py" />
         <option value="$PROJECT_DIR$/cpsxblock/static/js/togetherjs-min.js" />
-        <option value="$PROJECT_DIR$/cpsxblock/cpsxblock.py" />
         <option value="$PROJECT_DIR$/cpsxblock/static/html/cpsxblock.html" />
+        <option value="$PROJECT_DIR$/cpsxblock/cpsxblock.py" />
+        <option value="$PROJECT_DIR$/cpsxblock/static/css/google-fonts.css" />
+        <option value="$PROJECT_DIR$/cpsxblock/static/css/cpsxblock.css" />
         <option value="$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js" />
       </list>
     </option>
@@ -237,6 +246,13 @@
               <item name="cpsxblock" type="462c0819:PsiDirectoryNode" />
               <item name="cpsxblock" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cpsxblock" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cpsxblock" type="462c0819:PsiDirectoryNode" />
+              <item name="cpsxblock" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cpsxblock" type="b2602c69:ProjectViewProjectNode" />
@@ -318,7 +334,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28174123" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30329043" sideWeight="0.4941691" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30758226" sideWeight="0.4941691" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -355,61 +371,67 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>92</line>
+          <line>91</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>113</line>
+          <line>112</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>161</line>
+          <line>160</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>232</line>
+          <line>231</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>263</line>
+          <line>262</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>303</line>
+          <line>302</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>350</line>
+          <line>310</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>139</line>
+          <line>138</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>239</line>
+          <line>238</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>265</line>
+          <line>264</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
-          <line>197</line>
+          <line>196</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js</url>
+          <line>45</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="30" />
+      <option name="time" value="31" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -474,25 +496,21 @@
             <element signature="e#757#791#0" expanded="false" />
             <element signature="n#!!block;n#updateLastActivity#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#1008#1492#0" expanded="false" />
-            <element signature="n#!!block;n#toggleButton#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#1628#1684#0" expanded="false" />
             <element signature="n#!!block;n#enter_online_pool#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#pairMatch#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#updateToDefaultCohort#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#getAvailableUsers#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#getRoom#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#9072#9245#0" expanded="false" />
-            <element signature="e#9290#9809#0" expanded="false" />
+            <element signature="e#8973#9492#0" expanded="false" />
             <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#11713#11741#0" expanded="false" />
-            <element signature="e#14968#15119#0" expanded="false" />
-            <element signature="e#15296#15338#0" expanded="false" />
-            <element signature="e#15450#15493#0" expanded="false" />
-            <element signature="e#15559#15601#0" expanded="false" />
-            <element signature="e#15661#15701#0" expanded="false" />
-            <element signature="e#15896#16294#0" expanded="false" />
-            <element signature="e#16941#17466#0" expanded="false" />
+            <element signature="e#13169#13320#0" expanded="false" />
+            <element signature="e#13497#13539#0" expanded="false" />
+            <element signature="e#13651#13694#0" expanded="false" />
+            <element signature="e#13760#13802#0" expanded="false" />
+            <element signature="e#13862#13902#0" expanded="false" />
+            <element signature="e#14097#14495#0" expanded="false" />
+            <element signature="e#15142#15667#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -584,25 +602,21 @@
             <element signature="e#757#791#0" expanded="false" />
             <element signature="n#!!block;n#updateLastActivity#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#1008#1492#0" expanded="false" />
-            <element signature="n#!!block;n#toggleButton#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#1628#1684#0" expanded="false" />
             <element signature="n#!!block;n#enter_online_pool#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#pairMatch#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#updateToDefaultCohort#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#getAvailableUsers#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#getRoom#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#9072#9245#0" expanded="false" />
-            <element signature="e#9290#9809#0" expanded="false" />
+            <element signature="e#8973#9492#0" expanded="false" />
             <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#11713#11741#0" expanded="false" />
-            <element signature="e#14968#15119#0" expanded="false" />
-            <element signature="e#15296#15338#0" expanded="false" />
-            <element signature="e#15450#15493#0" expanded="false" />
-            <element signature="e#15559#15601#0" expanded="false" />
-            <element signature="e#15661#15701#0" expanded="false" />
-            <element signature="e#15896#16294#0" expanded="false" />
-            <element signature="e#16941#17466#0" expanded="false" />
+            <element signature="e#13169#13320#0" expanded="false" />
+            <element signature="e#13497#13539#0" expanded="false" />
+            <element signature="e#13651#13694#0" expanded="false" />
+            <element signature="e#13760#13802#0" expanded="false" />
+            <element signature="e#13862#13902#0" expanded="false" />
+            <element signature="e#14097#14495#0" expanded="false" />
+            <element signature="e#15142#15667#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -663,25 +677,21 @@
             <element signature="e#757#791#0" expanded="false" />
             <element signature="n#!!block;n#updateLastActivity#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#1008#1492#0" expanded="false" />
-            <element signature="n#!!block;n#toggleButton#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#1628#1684#0" expanded="false" />
             <element signature="n#!!block;n#enter_online_pool#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#pairMatch#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#updateToDefaultCohort#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#getAvailableUsers#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#getRoom#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#9072#9245#0" expanded="false" />
-            <element signature="e#9290#9809#0" expanded="false" />
+            <element signature="e#8973#9492#0" expanded="false" />
             <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#11713#11741#0" expanded="false" />
-            <element signature="e#14968#15119#0" expanded="false" />
-            <element signature="e#15296#15338#0" expanded="false" />
-            <element signature="e#15450#15493#0" expanded="false" />
-            <element signature="e#15559#15601#0" expanded="false" />
-            <element signature="e#15661#15701#0" expanded="false" />
-            <element signature="e#15896#16294#0" expanded="false" />
-            <element signature="e#16941#17466#0" expanded="false" />
+            <element signature="e#13169#13320#0" expanded="false" />
+            <element signature="e#13497#13539#0" expanded="false" />
+            <element signature="e#13651#13694#0" expanded="false" />
+            <element signature="e#13760#13802#0" expanded="false" />
+            <element signature="e#13862#13902#0" expanded="false" />
+            <element signature="e#14097#14495#0" expanded="false" />
+            <element signature="e#15142#15667#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -727,25 +737,21 @@
             <element signature="e#757#791#0" expanded="false" />
             <element signature="n#!!block;n#updateLastActivity#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#1008#1492#0" expanded="false" />
-            <element signature="n#!!block;n#toggleButton#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#1628#1684#0" expanded="false" />
             <element signature="n#!!block;n#enter_online_pool#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#pairMatch#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#updateToDefaultCohort#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#getAvailableUsers#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#getRoom#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#9072#9245#0" expanded="false" />
-            <element signature="e#9290#9809#0" expanded="false" />
+            <element signature="e#8973#9492#0" expanded="false" />
             <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#11713#11741#0" expanded="false" />
-            <element signature="e#14968#15119#0" expanded="false" />
-            <element signature="e#15296#15338#0" expanded="false" />
-            <element signature="e#15450#15493#0" expanded="false" />
-            <element signature="e#15559#15601#0" expanded="false" />
-            <element signature="e#15661#15701#0" expanded="false" />
-            <element signature="e#15896#16294#0" expanded="false" />
-            <element signature="e#16941#17466#0" expanded="false" />
+            <element signature="e#13169#13320#0" expanded="false" />
+            <element signature="e#13497#13539#0" expanded="false" />
+            <element signature="e#13651#13694#0" expanded="false" />
+            <element signature="e#13760#13802#0" expanded="false" />
+            <element signature="e#13862#13902#0" expanded="false" />
+            <element signature="e#14097#14495#0" expanded="false" />
+            <element signature="e#15142#15667#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -780,13 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cpsxblock/static/css/google-fonts.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -805,31 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="585">
-            <caret line="39" column="6" lean-forward="false" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cpsxblock/static/css/cpsxblock.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="14" lean-forward="false" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,17 +826,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cpsxblock/cpsxblock.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        <state relative-caret-position="375">
+          <caret line="97" column="55" lean-forward="false" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="55" />
           <folding>
             <element signature="e#57#72#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="453">
+            <caret line="39" column="6" lean-forward="false" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cpsxblock/static/js/togetherjs-min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
+        <state relative-caret-position="1298">
           <caret line="699" column="50" lean-forward="false" selection-start-line="699" selection-start-column="50" selection-end-line="699" selection-end-column="50" />
           <folding />
         </state>
@@ -876,35 +867,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cpsxblock/static/css/google-fonts.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cpsxblock/static/css/cpsxblock.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="78" column="15" lean-forward="false" selection-start-line="78" selection-start-column="1" selection-end-line="78" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cpsxblock/static/js/src/cpsxblock.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="371" column="50" lean-forward="true" selection-start-line="371" selection-start-column="50" selection-end-line="371" selection-end-column="50" />
+        <state relative-caret-position="-195">
+          <caret line="48" column="27" lean-forward="false" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
           <folding>
             <element signature="n#!!block;n#updateUserName#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#512#688#0" expanded="false" />
             <element signature="e#757#791#0" expanded="false" />
             <element signature="n#!!block;n#updateLastActivity#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="e#1008#1492#0" expanded="false" />
-            <element signature="n#!!block;n#toggleButton#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#1628#1684#0" expanded="false" />
             <element signature="n#!!block;n#enter_online_pool#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#pairMatch#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#updateToDefaultCohort#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#getAvailableUsers#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#getRoom#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#9072#9245#0" expanded="false" />
-            <element signature="e#9290#9809#0" expanded="false" />
+            <element signature="e#8973#9492#0" expanded="false" />
             <element signature="n#!!block;n#checkTogetherJsStatus#0;n#!!block;n#CPSXBlock#0" expanded="false" />
             <element signature="n#!!block;n#snackbar#0;n#!!block;n#CPSXBlock#0" expanded="false" />
-            <element signature="e#11713#11741#0" expanded="false" />
-            <element signature="e#14968#15119#0" expanded="false" />
-            <element signature="e#15296#15338#0" expanded="false" />
-            <element signature="e#15450#15493#0" expanded="false" />
-            <element signature="e#15559#15601#0" expanded="false" />
-            <element signature="e#15661#15701#0" expanded="false" />
-            <element signature="e#15896#16294#0" expanded="false" />
-            <element signature="e#16941#17466#0" expanded="false" />
+            <element signature="e#13169#13320#0" expanded="false" />
+            <element signature="e#13497#13539#0" expanded="false" />
+            <element signature="e#13651#13694#0" expanded="false" />
+            <element signature="e#13760#13802#0" expanded="false" />
+            <element signature="e#13862#13902#0" expanded="false" />
+            <element signature="e#14097#14495#0" expanded="false" />
+            <element signature="e#15142#15667#0" expanded="false" />
           </folding>
         </state>
       </provider>

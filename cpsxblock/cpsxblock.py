@@ -47,10 +47,24 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     )
     Shareable_Hint_Block_Code = String(
         default='d0413bf128374e90889b1a151aeec014', scope = Scope.settings,
-        help ="if you want to assign partners one hint each, enter the code for block containing hints section, so that selected hints will be shared amongst partners!"
+        help ="if you want to assign partners one hint each, enter the block code of the component, can find in component -> edit -> settings -> componenet ID location, e.g: if CompoenentID=block-v1:NYU+DEMO_101+2018_T1+type@problem+block@078DE_COL_H2, block code is 078DE_COL_H2  !"
     )
 
-    editable_fields = ('Matching_Algorithm','Group_Size','Collaboration_Type','Shareable_Hint_Block_Code')
+    theme_shared_content = String(
+        default = '', scope = Scope.settings,
+        help = "stylize blocks which are shared amongst patners, enter comma separated componenet ID location: e.g: block-v1:NYU+DEMO_101+2018_T1+type@problem+block@078DE_COL_H2"
+    )
+    theme_unique_content = String(
+        default='', scope=Scope.settings,
+        help="stylize blocks which are unique amongst patners, enter comma separated componenet ID location: e.g: block-v1:NYU+DEMO_101+2018_T1+type@problem+block@078DE_COL_H2"
+    )
+
+    editable_fields = ('Matching_Algorithm',
+                       'Group_Size',
+                       'Collaboration_Type',
+                       'Shareable_Hint_Block_Code',
+                       'theme_shared_content',
+                       'theme_unique_content')
     # Fields are defined on the class.  You can access them in your code as
     # self.<fieldname>.
 
@@ -79,7 +93,10 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         frag.add_css(self.resource_string("static/css/cpsxblock.css"))
         frag.add_javascript(self.resource_string("static/js/src/cpsxblock.js"))
         frag.add_javascript(self.resource_string("static/js/togetherjs-min.js"))
-        frag.initialize_js('CPSXBlock', {'collab_type': self.Collaboration_Type, 'shareable_hints':self.Shareable_Hint_Block_Code})
+        frag.initialize_js('CPSXBlock', {'collab_type': self.Collaboration_Type,
+                                         'shareable_hints':self.Shareable_Hint_Block_Code,
+                                         'shared_blocks':self.theme_shared_content,
+                                         'unique_blocks':self.theme_unique_content})
         return frag
 
 
