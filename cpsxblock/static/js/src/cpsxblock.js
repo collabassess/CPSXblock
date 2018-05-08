@@ -332,10 +332,9 @@ function CPSXBlock(runtime, element,data) {
     */
 
     $(".submit,#send").click(function () {
-        alert(1);
         setTimeout(function () {
-            var text = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response #inputtype_d0413bf128374e90889b1a151aeec014_2_1 .message").text();
-            if(TogetherJS.running){
+            var text = selector.text().trim();
+            if(TogetherJS.running && text !== value){
                 var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
                 var session = TogetherJS.require("session");
                 session.send(msg);
@@ -343,29 +342,35 @@ function CPSXBlock(runtime, element,data) {
         },3000);
     });
 
-    function sendAnswers(){
-        setTimeout(function () {
-            alert("updated");
-            console.log("submit button clicked");
-            console.log(value);
-            // selector.append("yo man ssup");
-            var value2 = selector.text();
-            console.log(compareString(value,value2));
-            var text = compareString(value,value2).trim();
-            if(TogetherJS.running){
-                var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
-                var session = TogetherJS.require("session");
-                session.send(msg);
-            }
-        },6000);
-    }
+    // function sendAnswers(){
+    //     setTimeout(function () {
+    //         alert("updated");
+    //         console.log("submit button clicked");
+    //         console.log(value);
+    //         // selector.append("yo man ssup");
+    //         var value2 = selector.text();
+    //         console.log(compareString(value,value2));
+    //         var text = compareString(value,value2).trim();
+    //         if(TogetherJS.running){
+    //             var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
+    //             var session = TogetherJS.require("session");
+    //             session.send(msg);
+    //         }
+    //     },6000);
+    // }
+
     $(function ($) {
             //getAvailableUsers();
-            selector_str = "#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response #inputtype_d0413bf128374e90889b1a151aeec014_2_1 ";
-            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response");
-            value = selector.text();
 
-            selector.bind('DOMNodeInserted',sendAnswers);
+            selector_str = "#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response #inputtype_d0413bf128374e90889b1a151aeec014_2_1 ";
+            // selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response");
+            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .message");
+            if(selector.length){
+                value = selector.text().trim();
+            }
+
+
+            // selector.bind('DOMNodeInserted',sendAnswers);
 
             console.log(value);
 
