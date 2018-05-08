@@ -331,13 +331,16 @@ function CPSXBlock(runtime, element,data) {
         $("#find_partner").show();
     */
 
-    $(".submit").click(function () {
-        var text = $(selector_str+".message").text();
-        if(TogetherJS.running){
-            var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
-            var session = TogetherJS.require("session");
-            session.send(msg);
-        }
+    $(".submit,#send").click(function () {
+        alert(1);
+        setTimeout(function () {
+            var text = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response #inputtype_d0413bf128374e90889b1a151aeec014_2_1 .message").text();
+            if(TogetherJS.running){
+                var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
+                var session = TogetherJS.require("session");
+                session.send(msg);
+            }
+        },3000);
     });
 
     function sendAnswers(){
@@ -359,7 +362,7 @@ function CPSXBlock(runtime, element,data) {
     $(function ($) {
             //getAvailableUsers();
             selector_str = "#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response #inputtype_d0413bf128374e90889b1a151aeec014_2_1 ";
-            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response #inputtype_d0413bf128374e90889b1a151aeec014_2_1");
+            selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response");
             value = selector.text();
 
             selector.bind('DOMNodeInserted',sendAnswers);
