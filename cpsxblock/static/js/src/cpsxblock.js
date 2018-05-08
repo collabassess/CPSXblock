@@ -275,7 +275,7 @@ function CPSXBlock(runtime, element,data) {
                 $("#collaborate").addClass("button-error");
                 $("#collaborate").show();
                 $("#find_partner").hide();
-
+                assign_theme();
 
             }else{
                 getRoom(function (res) { //if no room is ready to connect yet
@@ -292,6 +292,7 @@ function CPSXBlock(runtime, element,data) {
                         $("#collaborate").addClass("button-success");
                     }
                 });
+                remove_theme();
             }
     }
 
