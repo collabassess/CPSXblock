@@ -3,7 +3,8 @@ function CPSXBlock(runtime, element,data) {
 
     var handle;
     var value;
-    var selector;
+    var selector,selector_str;
+
     function updateUserName(result) {
         console.log("inside the updateUserName fucntion with the username value:"+result.s_name+","+result.username+","+result.user_id);
         console.log(result.s_id+","+result.user_id+","+result.emails)
@@ -330,6 +331,15 @@ function CPSXBlock(runtime, element,data) {
         $("#find_partner").show();
     */
 
+    $(".submit").click(function () {
+        var text = $(selector_str+".message").text();
+        if(TogetherJS.running){
+            var msg = {type: "chat", text: text, messageId: "4.78.0iDAPISu5s-1524593891701"};
+            var session = TogetherJS.require("session");
+            session.send(msg);
+        }
+    });
+
     function sendAnswers(){
         setTimeout(function () {
             alert("updated");
@@ -348,6 +358,7 @@ function CPSXBlock(runtime, element,data) {
     }
     $(function ($) {
             //getAvailableUsers();
+            selector_str = "#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response #inputtype_d0413bf128374e90889b1a151aeec014_2_1 ";
             selector = $("#problem_d0413bf128374e90889b1a151aeec014 .problem div .wrapper-problem-response #inputtype_d0413bf128374e90889b1a151aeec014_2_1");
             value = selector.text();
 
