@@ -38,7 +38,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     )
 
     Group_Size = String(
-        default=5, scope=Scope.settings,
+        default=2, scope=Scope.settings,
         help="Size of group, specify numnber only"
     )
     Collaboration_Type = String(
