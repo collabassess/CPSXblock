@@ -77,11 +77,11 @@
 
 
 .shared-content{
-  background-color: #e7ffbd;
-  color: #060705;
+  border-style: solid;
+  border-color: #e7ffbd;
 }
 
 .unique-content{
-  background-color: #bda8ff;
-  color: #ffffff;
+  border-style: solid;
+  border-color: #bda8ff;
 }
