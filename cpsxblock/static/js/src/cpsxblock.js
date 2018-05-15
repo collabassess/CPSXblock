@@ -311,6 +311,8 @@ function CPSXBlock(runtime, element,data) {
     $(function ($) {
             var title = document.title.split("|");
 
+            var session = TogetherJS.require("session")
+            console.log(session.hubUrl);
             if(data.shareable_hints !== ''){
                 selector = "#problem_"+data.shareable_hints+" .message";
                 if($(selector).length){
