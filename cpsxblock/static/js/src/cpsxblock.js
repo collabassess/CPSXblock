@@ -308,6 +308,23 @@ function CPSXBlock(runtime, element,data) {
     }
 
 
+    $(".button-next").click(function () {
+        var submit_event_msg = {
+                        type: "navigate_next",
+                        from_question: title[1],
+                        course: title[2]
+                    };
+        TogetherJS.send(submit_event_msg);
+    });
+
+    $(".button-previous").click(function () {
+        var submit_event_msg = {
+                        type: "navigate_prev",
+                        from_question: title[1],
+                        course: title[2]
+                    };
+        TogetherJS.send(submit_event_msg);
+    });
 
     $(function ($) {
 
@@ -342,6 +359,7 @@ function CPSXBlock(runtime, element,data) {
                     },3000);
                 });
             }
+
 
             snackbar("loading...");
             setTimeout(checkTogetherJsStatus, 3000);
