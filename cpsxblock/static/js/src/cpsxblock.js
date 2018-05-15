@@ -276,6 +276,8 @@ function CPSXBlock(runtime, element,data) {
                 $("#collaborate").show();
                 $("#find_partner").hide();
                 assign_theme();
+                var session = TogetherJS.require("session")
+                console.log(session.hubUrl);
 
             }else{
                 getRoom(function (res) { //if no room is ready to connect yet
@@ -311,8 +313,7 @@ function CPSXBlock(runtime, element,data) {
     $(function ($) {
             var title = document.title.split("|");
 
-            var session = TogetherJS.require("session")
-            console.log(session.hubUrl);
+
             if(data.shareable_hints !== ''){
                 selector = "#problem_"+data.shareable_hints+" .message";
                 if($(selector).length){
