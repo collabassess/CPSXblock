@@ -309,6 +309,7 @@ function CPSXBlock(runtime, element,data) {
 
 
     $(function ($) {
+            var title = document.title.split("|");
 
             if(data.shareable_hints !== ''){
                 selector = "#problem_"+data.shareable_hints+" .message";
@@ -323,42 +324,48 @@ function CPSXBlock(runtime, element,data) {
                         console.log(selector);
                         var text = $(selector).text().trim();
                         console.log(text);
-                        var title = document.title.split("|");
                         if(text !== ""){
                             text = "Question "+title[1]+": Your Partner chose:"+text;
                             if(TogetherJS.running && text !== value){
                                 var msg = {type: "chat", text: text, messageId: "NA"};
                                 var session = TogetherJS.require("session");
                                 session.send(msg);
-                            }
-                        }
-                        var submit_event_msg = {
+                                var submit_event_msg = {
                                         type: "form_submit_event",
                                         question: title[1],
                                         course: title[2]
                                     };
-                        TogetherJS.send(submit_event_msg);
+                                TogetherJS.send(submit_event_msg);
+                            }
+                        }
+
                     },3000);
                 });
             }
 
 
             $(".button-next").mousedown(function () {
-                var submit_event_msg = {
+                if(TogetherJS.running){
+                    var submit_event_msg = {
                                 type: "navigate_next",
                                 from_question: title[1],
                                 course: title[2]
                             };
-                TogetherJS.send(submit_event_msg);
+                    TogetherJS.send(submit_event_msg);
+                }
+
             });
 
             $(".button-previous").mousedown(function () {
-                var submit_event_msg = {
+                if(TogetherJS.running){
+                    var submit_event_msg = {
                                 type: "navigate_prev",
                                 from_question: title[1],
                                 course: title[2]
                             };
-                TogetherJS.send(submit_event_msg);
+                    TogetherJS.send(submit_event_msg);
+                }
+
             });
             snackbar("loading...");
             setTimeout(checkTogetherJsStatus, 3000);
