@@ -1,0 +1,14 @@
+cpsxblock/__init__.py
+cpsxblock/cpsxblock.py
+cpsxblock/settings.py
+cpsxblock/static/README.txt
+cpsxblock/static/css/cpsxblock.css
+cpsxblock/static/html/cpsxblock.html
+cpsxblock/static/js/togetherjs-min.js
+cpsxblock/static/js/src/cpsxblock.js
+cpsxblock_xblock.egg-info/PKG-INFO
+cpsxblock_xblock.egg-info/SOURCES.txt
+cpsxblock_xblock.egg-info/dependency_links.txt
+cpsxblock_xblock.egg-info/entry_points.txt
+cpsxblock_xblock.egg-info/requires.txt
+cpsxblock_xblock.egg-info/top_level.txt
