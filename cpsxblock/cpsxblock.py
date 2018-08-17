@@ -1,9 +1,12 @@
-"""TO-DO: Write a description of what this XBlock is."""
-import datetime
-import pytz
 import json
 import logging
-# import io
+
+import pkg_resources
+from xblock.core import XBlock
+from xblock.fields import Integer, Scope, String
+from xblock.fragment import Fragment
+from xblockutils.studio_editable import StudioEditableXBlockMixin
+import requests
 
 log = logging.getLogger(__name__)
 
@@ -13,23 +16,23 @@ logging.disable(logging.CRITICAL)
 logging.disable(logging.DEBUG)
 logging.disable(logging.INFO)
 
-
-import pkg_resources
-from xblock.core import XBlock
-from xblock.fields import Integer, Scope,String, DateTime, Boolean
-from xblock.fragment import Fragment
-from xblockutils.studio_editable import StudioEditableXBlockMixin
-import MySQLdb
-import settings as s
-import requests
-
 # @XBlock.needs('fs')
 @XBlock.needs("i18n")
 @XBlock.wants('user')
-class CPSXBlock(StudioEditableXBlockMixin,XBlock):
+class CPSXBlock(StudioEditableXBlockMixin, XBlock):
     """
     TO-DO: document what your XBlock does.
     """
+
+    API_Host = String(
+        default="localhost", scope=Scope.settings,
+        help="Hostname where the CPSX API is located"
+    )
+
+    API_Port = Integer(
+        default=3000, scope=Scope.settings,
+        help="Port on which the CPSX API is listening"
+    )
 
     Matching_Algorithm = String(
         default="FCFS", scope=Scope.settings,
@@ -39,7 +42,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
 
     Group_Size = String(
         default=2, scope=Scope.settings,
-        help="Size of group, specify numnber only"
+        help="Size of group, specify number only"
     )
     Collaboration_Type = String(
         default='chat', scope=Scope.settings,
@@ -99,7 +102,6 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
                                          'unique_blocks':self.theme_unique_content})
         return frag
 
-
     @property
     def course_id(self):
         if hasattr(self, 'xmodule_runtime'):
@@ -108,6 +110,12 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
             else:
                 return self.xmodule_runtime.course_id
         return 'course-v1:NYU+DEMO_101+2018_T1'
+    
+    def post_api(self, uri, json_data):
+        """
+        Performs an HTTP request to the API with `json_data` as a dict
+        """
+        return requests.post("{0}:{1}{2}".format(self.API_Host, self.API_Port, uri), json=json_data)
 
     @XBlock.json_handler
     def getPartners(self,data,suffix=''):
@@ -116,8 +124,8 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     def getAvailablePartners(self):
         curr_user = self.get_userid()
         data = {'curr_user': curr_user, 'pairing_type': self.Matching_Algorithm}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/getAvailablePartners",
-                                 json=data)
+        response = self.post_api("/onlinePool/getAvailablePartners", data)
+
         if response.text != "no partner available":
             ids = json.loads(response.text)
         else:
@@ -134,22 +142,21 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     def updateToDefaultCohort(self,data,suffix):
         curr_user = self.get_userid()
         data = {'curr_user': curr_user, 'course_id': str(self.course_id)}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/updateToDefaultCohort",
-                                 json=data)
+        response = self.post_api("/onlinePool/updateToDefaultCohort", data)
+
         return str(response.text)
 
     @XBlock.json_handler
     def pair(self,data,suffix=''):
         content = {'user1': int(self.get_userid()), 'user2': int(data['partner']), 'course_id': str(self.course_id)}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/pairUsers",
-                                 json=content)
+        response = self.post_api("/onlinePool/pairUsers", content)
         room = str(response.text)
         return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": room}
 
 
     def pair_users(self, partner):
         content = {'user1': int(self.get_userid()), 'user2': int(partner), 'course_id': str(self.course_id)}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/pairUsers",json=content)
+        response = self.post_api("/onlinePool/pairUsers", content)
         room = str(response.text)
         return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": room}
 
@@ -157,8 +164,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
     def getRoom(self,data,suffix=''):
         curr_user = self.get_userid()
         data = {'curr_user': curr_user}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/users/getRoom",
-                                 json=data)
+        response = self.post_api("/users/getRoom", data)
         room = str(response.text)
         return {"room": room, "size": self.Group_Size, "s_id": self.get_userid(), "s_session": room}
 
@@ -171,10 +177,9 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         """
         curr_user = self.get_userid()
         data = {'curr_user':curr_user}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/addToUserPool",json=data)
-        if response.text == "success":
-            return True
-        return False
+        response = self.post_api("/onlinePool/addToUserPool", data)
+        
+        return response.text == "success"
 
     @XBlock.json_handler
     def removeFromUserPool(self, data, suffix=''):
@@ -185,11 +190,9 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         """
         curr_user = self.get_userid()
         data = {'curr_user': curr_user}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/UserPoolToOffline",
-                                 json=data)
-        if response.text == "success":
-            return True
-        return False
+        response = self.post_api("/onlinePool/UserPoolToOffline", data)
+        
+        return response.text == "success"
 
     @XBlock.json_handler
     def updateLastOnline(self, data, suffix=''):
@@ -200,11 +203,9 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         """
         curr_user = self.get_userid()
         data = {'curr_user': curr_user}
-        response = requests.post("http://ec2-54-156-197-224.compute-1.amazonaws.com:3000/onlinePool/updateLastOnlineUserPool",
-                                 json=data)
-        if response.text == "success":
-            return True
-        return False
+        response = self.post_api("/onlinePool/updateLastOnlineUserPool", data)
+        
+        return response.text == "success"
 
     @XBlock.json_handler
     def returnUserName(self, data, suffix=''):
@@ -232,7 +233,7 @@ class CPSXBlock(StudioEditableXBlockMixin,XBlock):
         try:
             return self.get_user().opt_attrs['edx-platform.user_id']
         except:
-            return '4'
+            return '4' # Why 4?
 
 
     # TO-DO: change this to create the scenarios you'd like to see in the
