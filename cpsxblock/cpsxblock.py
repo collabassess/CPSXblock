@@ -122,7 +122,7 @@ class CPSXBlock(StudioEditableXBlockMixin, XBlock):
         """
         Performs an HTTP request to the API with `json_data` as a dict
         """
-        return requests.post("{0}:{1}{2}".format(self.API_Host, self.API_Port, uri), json=json_data)
+        return requests.post("http://{0}:{1}{2}".format(self.API_Host, self.API_Port, uri), json=json_data)
 
     @XBlock.json_handler
     def getPartners(self,data,suffix=''):
