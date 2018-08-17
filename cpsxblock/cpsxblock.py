@@ -44,10 +44,12 @@ class CPSXBlock(StudioEditableXBlockMixin, XBlock):
         default=2, scope=Scope.settings,
         help="Size of group, specify number only"
     )
+
     Collaboration_Type = String(
         default='chat', scope=Scope.settings,
         help="accepted values: chat(for chat only),audio(for both chat and audio)"
     )
+
     Shareable_Hint_Block_Code = String(
         default='d0413bf128374e90889b1a151aeec014', scope = Scope.settings,
         help ="if you want to assign partners one hint each, enter the block code of the component, can find in component -> edit -> settings -> componenet ID location, e.g: if CompoenentID=block-v1:NYU+DEMO_101+2018_T1+type@problem+block@078DE_COL_H2, block code is 078DE_COL_H2  !"
@@ -57,17 +59,22 @@ class CPSXBlock(StudioEditableXBlockMixin, XBlock):
         default = '', scope = Scope.settings,
         help = "stylize blocks which are shared amongst patners, enter comma separated serial number of component - 0,1,2,3..."
     )
+
     theme_unique_content = String(
         default='', scope=Scope.settings,
         help="stylize blocks which are unique amongst patners, enter comma separated serial number of component - 0,1,2,3..."
     )
 
-    editable_fields = ('Matching_Algorithm',
-                       'Group_Size',
-                       'Collaboration_Type',
-                       'Shareable_Hint_Block_Code',
-                       'theme_shared_content',
-                       'theme_unique_content')
+    editable_fields = (
+        'API_Host',
+        'API_Port',
+        'Matching_Algorithm',
+        'Group_Size',
+        'Collaboration_Type',
+        'Shareable_Hint_Block_Code',
+        'theme_shared_content',
+        'theme_unique_content'
+    )
     # Fields are defined on the class.  You can access them in your code as
     # self.<fieldname>.
 
